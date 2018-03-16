@@ -1559,7 +1559,7 @@ Version:	1.0
 	position:absolute;
 	top:0;
 	content:"";
-	background-image:url('images/quote-icon.png');
+	background-image:url('../images/quote-icon.png');
 	width:100%;
 	height:100%;
 	background-repeat:no-repeat;

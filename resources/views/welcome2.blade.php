@@ -3,6 +3,12 @@
 @section('title', 'dulich.gmon.vn')
 
 @section('content')
+<?php 
+	$cities = \DB::table('cities')->select('id', 'name')->where('active', 1)->get();
+	$activities = \DB::table('activities')->select('id', 'name')->where('active', 1)->get();
+	$durations = \DB::table('durations')->select('id', 'name')->where('active', 1)->get();
+	$budgets = \DB::table('budgets')->select('id', 'name')->where('active', 1)->get();
+	?>
 <!-- Hero Area -->
 <section id="hero-area" class="hero-area overlay" data-stellar-background-ratio="0.7">
 	<div class="hero-main">
@@ -23,9 +29,9 @@
 								<div class="form-group">
 									<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{ url('/') }}/public/images/destination-icon.png" alt="#">Destination</span>
 										<ul class="list">
-											<li data-value="1" class="option selected ">Destination One</li>
-											<li data-value="2" class="option">Destination Two</li>
-											<li data-value="3" class="option">Destination Three</li>
+											@foreach($cities as $city)
+											<li data-value="{{ $city->id }}" class="option">{{ $city->name }}</li>
+											@endforeach
 										</ul>
 									</div>
 								</div>
@@ -34,9 +40,9 @@
 								<div class="form-group">
 									<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{ url('/') }}/public/images/activities-icon.png" alt="#">Activities</span>
 										<ul class="list">
-											<li data-value="1" class="option selected ">Activities One</li>
-											<li data-value="2" class="option">Activities Two</li>
-											<li data-value="3" class="option">Activities Three</li>
+											@foreach($activities as $activity)
+											<li data-value="{{ $activity->id }}" class="option">{{ $activity->name }}</li>
+											@endforeach
 										</ul>
 									</div>
 								</div>
@@ -45,9 +51,9 @@
 								<div class="form-group duration">
 									<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{ url('/') }}/public/images/duration-icon.png" alt="#">Duration</span>
 										<ul class="list">
-											<li data-value="1" class="option selected ">Duration One</li>
-											<li data-value="2" class="option">Duration Two</li>
-											<li data-value="3" class="option">Duration Three</li>
+											@foreach($durations as $duration)
+											<li data-value="{{ $duration->id }}" class="option">{{ $duration->name }}</li>
+											@endforeach
 										</ul>
 									</div>
 								</div>
@@ -56,9 +62,9 @@
 								<div class="form-group">
 									<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{ url('/') }}/public/images/budget-icon.png" alt="#">Budget</span>
 										<ul class="list">
-											<li data-value="1" class="option selected">$300</li>
-											<li data-value="2" class="option">$300</li>
-											<li data-value="3" class="option">$300</li>
+											@foreach($budgets as $budget)
+											<li data-value="{{ $budget->id }}" class="option">{{ $budget->name }}</li>
+											@endforeach
 										</ul>
 									</div>
 								</div>
@@ -86,7 +92,7 @@
 			<div class="col-lg-6 col-12">
 				<!-- About Left -->
 				<div class="about-left">
-					<img src="http://via.placeholder.com/500x680" alt="#">
+					<img src="{{ url('/') }}/public/images/home/image1.jpg" alt="#">
 				</div>
 				<!--/ End About Left -->
 			</div>
@@ -153,7 +159,7 @@
 						<div class="col-lg-6 col-12">
 							<!-- Single Destination -->
 							<div class="single-destination overlay">
-								<img src="http://via.placeholder.com/571x235" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image2.jpg" alt="#">
 								<div class="hover">
 									<p class="price">FROM <span>$355</span></p>
 									<h4 class="name">London</h4>
@@ -165,7 +171,7 @@
 						<div class="col-lg-3 col-12">
 							<!-- Single Destination -->
 							<div class="single-destination overlay">
-								<img src="http://via.placeholder.com/270x235" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image3.jpg" alt="#">
 								<div class="hover">
 									<p class="price">FROM <span>$400</span></p>
 									<h4 class="name">Greece</h4>
@@ -177,7 +183,7 @@
 						<div class="col-lg-3 col-12">
 							<!-- Single Destination -->
 							<div class="single-destination overlay">
-								<img src="http://via.placeholder.com/270x235" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image4.jpg" alt="#">
 								<div class="hover">
 									<p class="price">FROM <span>$370</span></p>
 									<h4 class="name">Germany</h4>
@@ -189,7 +195,7 @@
 						<div class="col-lg-3 col-12">
 							<!-- Single Destination -->
 							<div class="single-destination overlay">
-								<img src="http://via.placeholder.com/270x235" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image5.jpg" alt="#">
 								<div class="hover">
 									<p class="price">FROM <span>$200</span></p>
 									<h4 class="name">Budapest</h4>
@@ -201,7 +207,7 @@
 						<div class="col-lg-3 col-12">
 							<!-- Single Destination -->
 							<div class="single-destination overlay">
-								<img src="http://via.placeholder.com/270x235" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image6.jpg" alt="#">
 								<div class="hover">
 									<p class="price">FROM <span>$150</span></p>
 									<h4 class="name">Italy</h4>
@@ -213,7 +219,7 @@
 						<div class="col-lg-6 col-12">
 							<!-- Single Destination -->
 							<div class="single-destination overlay">
-								<img src="http://via.placeholder.com/571x235" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image7.jpg" alt="#">
 								<div class="hover">
 									<p class="price">FROM <span>$800</span></p>
 									<h4 class="name">Switzerland</h4>
@@ -251,7 +257,7 @@
 						<!-- Single Slider -->
 						<div class="single-slider">
 							<div class="trip-head">
-								<img src="http://via.placeholder.com/344x230" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image8.jpg" alt="#">
 							</div>
 							<div class="trip-details">
 								<div class="left">
@@ -269,7 +275,7 @@
 						<div class="single-slider">
 							<div class="trip-head">									
 								<div class="trip-offer">25% OFF</div>
-								<img src="http://via.placeholder.com/344x230" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image9.jpg" alt="#">
 							</div>
 							<div class="trip-details">
 								<div class="left">
@@ -286,7 +292,7 @@
 						<!-- Single Slider -->
 						<div class="single-slider">
 							<div class="trip-head">
-								<img src="http://via.placeholder.com/344x230" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image10.jpg" alt="#">
 							</div>
 							<div class="trip-details">
 								<div class="left">
@@ -303,7 +309,7 @@
 						<!-- Single Slider -->
 						<div class="single-slider">
 							<div class="trip-head">
-								<img src="http://via.placeholder.com/344x230" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image8.jpg" alt="#">
 							</div>
 							<div class="trip-details">
 								<div class="left">
@@ -321,7 +327,7 @@
 						<div class="single-slider">
 							<div class="trip-head">
 								<div class="trip-offer">50% OFF</div>
-								<img src="http://via.placeholder.com/344x230" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image9.jpg" alt="#">
 							</div>
 							<div class="trip-details">
 								<div class="left">
@@ -338,7 +344,7 @@
 						<!-- Single Slider -->
 						<div class="single-slider">
 							<div class="trip-head">
-								<img src="http://via.placeholder.com/344x230" alt="#">
+								<img src="{{ url('/') }}/public/images/home/image10.jpg" alt="#">
 							</div>
 							<div class="trip-details">
 								<div class="left">

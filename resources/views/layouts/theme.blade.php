@@ -40,6 +40,8 @@
 
 	<?php 
 		$siteConfig = \DB::table('site_configs')->pluck('text', 'name');
+		$categories = \DB::table('categories')->select('id', 'name')->where('active', 1)->get();
+		$services = \DB::table('services')->select('id', 'name')->where('active', 1)->get();
 	?>
 	
 	<!-- Preloader -->
@@ -131,19 +133,20 @@
 						<div class="main-menu">
 							<nav class="navigation">
 								<ul class="nav menu">
-									<li class="active"><a href="#">Home</a>
+									<li class="active"><a href="{{ url('/') }}">Home</a>
 									</li>
 									<li><a href="#">Trip package<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
-											<li><a href="trip-3-column.html">Trip Package 3 Column</a></li>
-											<li><a href="trip-4-column.html">Trip Package 4 Column</a></li>
-											<li><a href="trip-single.html">Trip Single</a></li>
+											@foreach($categories as $category)
+											<li><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->name }}</a></li>
+											@endforeach
 										</ul>
 									</li>
 									<li><a href="#">Services<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
-											<li><a href="services.html">Services</a></li>
-											<li><a href="service-single.html">Service Single</a></li>
+											@foreach($services as $service)
+											<li><a href="{{ url('/') }}/service/{{ $service->id }}">{{ $service->name }}</a></li>
+											@endforeach
 										</ul>
 									</li>
 									<li><a href="#">Pages<i class="fa fa-angle-down"></i></a>
@@ -354,5 +357,10 @@
 	<script src="{{ url('/') }}/public/js/gmap.min.js"></script>
 	<!-- Active JS -->
 	<script src="{{ url('/') }}/public/js/active.js"></script>
+	<script type="text/javascript">
+		// setTimeout(function(){
+		//    window.location.reload(1);
+		// }, 5000);
+	</script>
 </body>
 </html>

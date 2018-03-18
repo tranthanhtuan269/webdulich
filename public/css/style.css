@@ -449,7 +449,7 @@ Version:	1.0
 ========================================*/  
 .hero-area {
 	position: relative;
-	background-image: url('http://via.placeholder.com/2000x1000');
+	background-image: url('../images/webbanner.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -947,7 +947,7 @@ Version:	1.0
   06. Popular Trips CSS
 ========================================*/
 .popular-trips{
-	background-image:url('http://via.placeholder.com/1600x1000');
+	background-image:url('../images/webbanner.jpg');
 	background-size:cover;
 	background-position:center;
 	background-repeat:no-repeat;
@@ -1402,7 +1402,7 @@ Version:	1.0
    09. Call To Action CSS
 ========================================*/
 .cta {
-	background-image: url('http://via.placeholder.com/1600x1000');
+	background-image: url('../images/webbanner.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1479,7 +1479,7 @@ Version:	1.0
 .cta-style3{
 	position:relative;
 	text-align: center;
-	background-image: url('http://via.placeholder.com/1600x1000');
+	background-image: url('../images/webbanner.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -2399,7 +2399,7 @@ Version:	1.0
    15. Counter CSS
 ========================================*/
 .counter {
-	background-image: url('http://via.placeholder.com/1600x1000');
+	background-image: url('../images/webbanner.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 90px 0 120px;
@@ -2443,7 +2443,7 @@ Version:	1.0
 ========================================*/
 .video{
 	text-align:center;
-	background-image:url('http://via.placeholder.com/1600x1000');
+	background-image:url('../images/webbanner.jpg');
 	background-size:cover;
 	background-position:center;
 	background-repeat:no-repeat;
@@ -2838,7 +2838,7 @@ Version:	1.0
   20. 404 CSS
 ========================================*/ 
 .error-page{
-	background-image:url('http://via.placeholder.com/1600x1000');
+	background-image:url('../images/webbanner.jpg');
 	background-size:cover;
 	background-position:center;
 	background-repeat:no-repeat;

@@ -11,9 +11,9 @@ class CityTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cities')->insert(['name' => 'Hà Nội']);
-		DB::table('cities')->insert(['name' => 'Hồ Chí Minh']);
-		DB::table('cities')->insert(['name' => 'Đà Nẵng']);
+        DB::table('cities')->insert(['name' => 'Hà Nội', 'active' => 1]);
+		DB::table('cities')->insert(['name' => 'Hồ Chí Minh', 'active' => 1]);
+		DB::table('cities')->insert(['name' => 'Đà Nẵng', 'active' => 1]);
 		DB::table('cities')->insert(['name' => 'Hải Phòng']);
 		DB::table('cities')->insert(['name' => 'Cần Thơ']);
 		DB::table('cities')->insert(['name' => 'An Giang']);

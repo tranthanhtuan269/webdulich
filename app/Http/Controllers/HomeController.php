@@ -28,11 +28,6 @@ class HomeController extends Controller
         return view('admin/config');
     }
 
-    public function contact()
-    {
-        return view('site/contact');
-    }
-
     public function store(Request $request)
     {
         $input = $request->all();

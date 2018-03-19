@@ -21,9 +21,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home.home');
 Route::get('/config-site', 'HomeController@config')->name('home.config');
-Route::get('/contact-us', 'HomeController@contact')->name('home.contact');
 Route::post('/store', 'HomeController@store')->name('home.store');
 
+Route::get('/contacts', 'ContactController@list')->name('contact.list');
+Route::get('/contacts/create', 'ContactController@create')->name('contact.create');
+Route::post('/contacts/store', 'ContactController@store')->name('contact.store');
+Route::get('/contacts/{id}', 'ContactController@view')->name('contact.view');
+Route::delete('/contacts/{id}', 'ContactController@destroy')->name('contact.destroy');
 
 Route::resource('categories', 'CategoryController');
 Route::post('categories/active', 'CategoryController@active')->name('categories.active');

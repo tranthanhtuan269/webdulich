@@ -107,7 +107,7 @@
 							<div class="single-widget">
 								<img src="{{ url('/') }}/public/images/call-icon.png" alt="#">
 								<h4>{{ $siteConfig['phone1'] }}</h4>
-								<p>{{ $siteConfig['phone1'] }}</p>
+								<p>{{ $siteConfig['phone2'] }}</p>
 							</div>
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
@@ -149,6 +149,7 @@
 											@endforeach
 										</ul>
 									</li>
+									@if(false)
 									<li><a href="#">Pages<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="about.html">About Us</a></li>
@@ -159,6 +160,7 @@
 											<li><a href="404.html">404 Page</a></li>
 										</ul>
 									</li>
+									@endif
 									<li><a href="#">Blogs<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											<li><a href="blog-grid.html">Blog Grid</a></li>
@@ -169,7 +171,7 @@
 											<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 										</ul>
 									</li>
-									<li><a href="contact.html">Contact Us</a></li>
+									<li><a href="{{ url('/') }}/contacts/create">Contact Us</a></li>
 								</ul>
 							</nav>
 						</div>

@@ -52,3 +52,7 @@ Route::post('cities/inactive', 'CityController@inactive')->name('cities.inactive
 Route::resource('activities', 'ActivityController');
 Route::post('activities/active', 'ActivityController@active')->name('activities.active');
 Route::post('activities/inactive', 'ActivityController@inactive')->name('activities.inactive');
+
+Route::resource('blogs', 'BlogController');
+Route::post('blogs/active', 'BlogController@active')->name('blogs.active');
+Route::post('blogs/inactive', 'BlogController@inactive')->name('blogs.inactive');

@@ -930,7 +930,7 @@
 </section>
 <!--/ End Services -->
 @endif
-
+@if(false)
 <!-- Blog Area -->
 <section id="blog-area" class="blog-area section">
     <div class="container">
@@ -989,4 +989,5 @@
     </div>
 </section>
 <!--/ End Blog Area -->
+@endif
 @endsection

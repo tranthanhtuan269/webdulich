@@ -12,138 +12,89 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
 
     <base href="{{ url('/') }}" target="_self">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li><a href="{{ url('/') }}/contacts">Contact</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Activity <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/activities/">List</a></li>
-                                    <li><a href="{{ url('/') }}/activities/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    City <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/cities/">List</a></li>
-                                    <li><a href="{{ url('/') }}/cities/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Duration <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/durations/">List</a></li>
-                                    <li><a href="{{ url('/') }}/durations/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Budget <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/budgets/">List</a></li>
-                                    <li><a href="{{ url('/') }}/budgets/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Service <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/services/">List</a></li>
-                                    <li><a href="{{ url('/') }}/services/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Category <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/categories/">List</a></li>
-                                    <li><a href="{{ url('/') }}/categories/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Blog <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('/') }}/blogs/">List</a></li>
-                                    <li><a href="{{ url('/') }}/blogs/create">Create</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+            <div class="navbar-collapse collapse" id="navbarsExample03" style="">
+                <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                    @guest
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                    @else
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/contacts">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/activities/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/activities/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">City</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/cities/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/cities/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Duration</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/durations/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/durations/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Budget</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/budgets/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/budgets/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Service</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/services/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/services/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/categories/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/categories/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('/') }}/blogs/">List</a>
+                            <a class="dropdown-item" href="{{ url('/') }}/blogs/create">Create</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
+                    </li>
+                    @endif
+                </ul>
             </div>
         </nav>
 
@@ -151,7 +102,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="{{ asset('public/js/function.js') }}"></script>
 </body>
 </html>

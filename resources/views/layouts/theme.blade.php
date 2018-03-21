@@ -163,12 +163,9 @@
 									@endif
 									<li><a href="#">Blogs<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
-											<li><a href="blog-grid.html">Blog Grid</a></li>
-											<li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-											<li><a href="blog-classic.html">Blog Classic</a></li>
-											<li><a href="blog-grid-sidebar.html">Blog Classic Sidebar</a></li>
-											<li><a href="blog-single.html">Blog Single</a></li>
-											<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
+											@foreach($categories as $category)
+											<li><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->name }}</a></li>
+											@endforeach
 										</ul>
 									</li>
 									<li><a href="{{ url('/') }}/contacts/create">Contact Us</a></li>
@@ -185,7 +182,7 @@
 	<!--/ End Header Area -->
 	
 	@yield('content')
-	
+	@if(false)
 	<!-- Clients -->
 	<div id="clients" class="clients section">
 		<div class="container">
@@ -223,7 +220,7 @@
 		</div>
 	</div>
 	<!--/ End Clients -->
-	
+	@endif
 	<!-- Footer -->
 	<footer class="footer">
 		<!-- Footer Top -->

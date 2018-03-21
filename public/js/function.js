@@ -36,8 +36,8 @@ $(document).ready(function(){
 		  	console.log(msg);
 		  	if(msg.status == 200){
 		  		console.log(_self);
-		  		_self.parent().find('.inactive-btn').removeClass('hide');
-		  		_self.addClass('hide');
+		  		_self.parent().find('.inactive-btn').removeClass('d-none');
+		  		_self.addClass('d-none');
 		  	}
 		});
 		 
@@ -59,8 +59,8 @@ $(document).ready(function(){
 		request.done(function( msg ) {
 		  	if(msg.status == 200){
 		  		console.log(_self);
-		  		_self.parent().find('.active-btn').removeClass('hide');
-		  		_self.addClass('hide');
+		  		_self.parent().find('.active-btn').removeClass('d-none');
+		  		_self.addClass('d-none');
 		  	}
 		});
 		 

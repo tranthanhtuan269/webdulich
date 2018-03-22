@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function getJCrop()
     {
-        return view('getJCrop')->with('image', public_path().'/images/'. Session::get('image'));
+        return view('getJCrop')->with('image', url('/').'/public/images/'. Session::get('image'));
     }
 
     public function postJCrop(){

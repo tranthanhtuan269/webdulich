@@ -2,15 +2,15 @@
     <head>
         <title>Laravel and Jcrop</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/jquery.Jcrop.min.css" />
+        <link rel="stylesheet" href="{{ url('/') }}/public/css/jcrop.min.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="js/jquery.Jcrop.min.js"></script>
+        <script src="{{ url('/') }}/public/js/jcrop.min.js"></script>
     </head>
     <body>
         <h2>Image Cropping with Laravel and Jcrop</h2>
         <img src="<?php echo $image ?>" id="cropimage">
 
-        <?= Form::open() ?>
+        <?= Form::open(array('route' => 'home.postJCrop', 'files' => true)) ?>
         <?= Form::hidden('image', $image) ?>
         <?= Form::hidden('x', '', array('id' => 'x')) ?>
         <?= Form::hidden('y', '', array('id' => 'y')) ?>

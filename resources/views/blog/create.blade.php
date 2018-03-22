@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
+<script src="{{ url('/') }}/public/ckeditor/ckeditor.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -73,7 +73,8 @@
     </div>
 </div>
 
-
+<style type="text/css" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.css"></style>
+<script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.js"></script>
 <script>
     CKEDITOR.replace( 'sub_content' );
     CKEDITOR.replace( 'content' );

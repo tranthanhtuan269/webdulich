@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('getImageForm', 'HomeController@getImageForm')->name('home.getImageForm');
+Route::post('postImageForm', 'HomeController@postImageForm')->name('home.postImageForm');
+Route::get('getJCrop', 'HomeController@getJCrop')->name('home.getJCrop');
+
+Route::post('postJCrop', 'HomeController@postJCrop')->name('home.postJCrop');
+
 Route::get('/test', 'SiteController@test');
 
 Auth::routes();

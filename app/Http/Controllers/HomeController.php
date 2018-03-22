@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use App\SiteConfig;
+use Session;
 
 class HomeController extends Controller
 {
@@ -66,5 +69,58 @@ class HomeController extends Controller
         }
         return Redirect::back()->withErrors(['Record has been successfully updated!']);
         // return Redirect::back()->with('message','Record has been successfully updated!');
+    }
+
+    public function getImageForm()
+    {
+        return view('imageform');
+    }
+
+    public function postImageForm(Request $request){
+        $rules = array(
+            'image' => 'required|mimes:jpeg,jpg|max:10000'
+        );
+
+        $validation = Validator::make(Input::all(), $rules);
+
+        if ($validation->fails())
+        {
+            return Redirect::to('getJCrop')->withErrors($validation);
+        }
+        else
+        {
+            $file = Input::file('image');
+            $file_name = $file->getClientOriginalName();
+            // dd(url('/').'/public/images/blogs/');
+            if ($file->move(url('/').'/public/upload', $file_name))
+            {
+                return Redirect::to('getJCrop')->with('image',$file_name);
+            }
+            else
+            {
+                return "Error uploading file";
+            }
+        }
+    }
+
+    public function getJCrop()
+    {
+        return view('getJCrop')->with('image', url('/').'/public/upload'. Session::get('image'));
+    }
+
+    public function postJCrop(){
+        $quality = 90;
+
+        $src  = Input::get('image');
+        $img  = imagecreatefromjpeg($src);
+        $dest = ImageCreateTrueColor(Input::get('w'),
+            Input::get('h'));
+
+        imagecopyresampled($dest, $img, 0, 0, Input::get('x'),
+            Input::get('y'), Input::get('w'), Input::get('h'),
+            Input::get('w'), Input::get('h'));
+        imagejpeg($dest, $src, $quality);
+
+        return "<img src='" . $src . "'>";
     }
 }

@@ -92,7 +92,7 @@ class HomeController extends Controller
             $file = Input::file('image');
             $file_name = $file->getClientOriginalName();
             // dd(url('/').'/public/images/blogs/');
-            if ($file->move(url('/').'/public/upload', $file_name))
+            if ($file->move(url('/').'/public/images/', $file_name))
             {
                 return Redirect::to('getJCrop')->with('image',$file_name);
             }
@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function getJCrop()
     {
-        return view('getJCrop')->with('image', url('/').'/public/upload'. Session::get('image'));
+        return view('getJCrop')->with('image', url('/').'/public/images/'. Session::get('image'));
     }
 
     public function postJCrop(){

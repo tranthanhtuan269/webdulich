@@ -21,6 +21,8 @@ Route::get('getJCrop', 'HomeController@getJCrop')->name('home.getJCrop');
 Route::post('postJCrop', 'HomeController@postJCrop')->name('home.postJCrop');
 
 Route::get('/test', 'SiteController@test');
+Route::get('/getToken', 'HomeController@getToken');
+Route::post('/postImage', 'HomeController@postImage');
 
 Auth::routes();
 

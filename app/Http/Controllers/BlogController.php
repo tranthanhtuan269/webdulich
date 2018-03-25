@@ -40,6 +40,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'image' => 'required|max:255'

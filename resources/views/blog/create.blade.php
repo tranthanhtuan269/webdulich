@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="{{ url('/') }}/public/ckeditor/ckeditor.js"></script>
+<script src="{{ url('/') }}/public/templateEditor/ckeditor/ckeditor.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -21,6 +21,7 @@
 				<div class="col-sm-8">
 					<form class="form-horizontal">
 						<input type="hidden" id="image_field" name="image" value="">
+						<input type="file" name="image-img" id="image-img" style="display: none;">
 						<div class="form-group row">
 						    {!! Form::label('title', 'Title', ['class' => 'col-md-3 control-label']) !!}
 						    <div class="col-md-9">
@@ -73,10 +74,25 @@
     </div>
 </div>
 
-<style type="text/css" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.css"></style>
-<script type="text/javascript" src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.js"></script>
 <script>
-    CKEDITOR.replace( 'sub_content' );
-    CKEDITOR.replace( 'content' );
+	var $sitepath = $('base').attr('href');
+
+    CKEDITOR.replace( 'sub_content', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    CKEDITOR.replace( 'content', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+
 </script>
 @endsection

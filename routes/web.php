@@ -21,9 +21,11 @@ Route::get('getJCrop', 'HomeController@getJCrop')->name('home.getJCrop');
 Route::post('postJCrop', 'HomeController@postJCrop')->name('home.postJCrop');
 
 Route::get('/test', 'SiteController@test');
-Route::get('/getToken', 'HomeController@getToken');
 Route::post('/postImage', 'HomeController@postImage');
 Route::post('/ajaxpro', 'HomeController@ajaxpro');
+
+Route::get('blogs/{id}', 'SiteController@showBlog')->name('blogs.showBlog');
+Route::get('categories/{id}', 'SiteController@showCategory')->name('categories.showCategory');
 
 Auth::routes();
 

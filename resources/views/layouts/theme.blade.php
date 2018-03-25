@@ -182,45 +182,7 @@
 	<!--/ End Header Area -->
 	
 	@yield('content')
-	@if(false)
-	<!-- Clients -->
-	<div id="clients" class="clients section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="clients-slider">
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients active">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--/ End Clients -->
-	@endif
+	
 	<!-- Footer -->
 	<footer class="footer">
 		<!-- Footer Top -->

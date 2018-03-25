@@ -14,6 +14,8 @@ $(document).ready(function(){
 		page = 'cities';
 	}else if(fullUrl.indexOf("activities") > -1){
 		page = 'activities';
+	}else if(fullUrl.indexOf("home") > -1){
+		page = 'home';
 	}
 
 	$.ajaxSetup({

@@ -4,10 +4,11 @@
 
 @section('content')
 <?php 
+    $siteConfig = \DB::table('site_configs')->pluck('text', 'name');
     $cities = \DB::table('cities')->select('id', 'name')->where('active', 1)->get();
     $activities = \DB::table('activities')->select('id', 'name')->where('active', 1)->get();
     $durations = \DB::table('durations')->select('id', 'name')->where('active', 1)->get();
-    $budgets = \DB::table('budgets')->select('id', 'name')->where('active', 1)->get();
+    $budgets = \DB::table('budgets')->select('id', 'name')->where('active', 1)->get();    
     ?>
 <!-- Hero Area -->
 <section id="hero-area" class="hero-area overlay" data-stellar-background-ratio="0.7">
@@ -85,7 +86,7 @@
 </section>
 <!--/ End Hero Area -->
 
-@if(false)
+@if($siteConfig['about_us'] == '1')
 <!-- About Us -->
 <section id="about-us" class="about-us section">
     <div class="container">
@@ -141,7 +142,7 @@
 </section>
 <!--/ End Main Area -->
 @endif
-@if(false)
+@if($siteConfig['popular_destinations'] == '1')
 <!-- Popular Destination -->
 <section id="p-destination" class="p-destination section">
     <div class="container">
@@ -239,7 +240,7 @@
 </section>
 <!--/ End Popular Destination -->
 @endif
-@if(false)
+@if($siteConfig['popular_trips'] == '1')
 <!-- Popular Trips -->
 <section id="popular-trips" class="popular-trips section overlay">
     <div class="container">
@@ -370,7 +371,7 @@
 </section>
 <!--/ End Popular Trips -->
 @endif
-@if(false)
+@if($siteConfig['popular_destinations'] == '1')
 <!-- Top Destination -->
 <section id="top-destination" class="top-destination section">
     <div class="container">
@@ -813,7 +814,7 @@
 </section>
 <!--/ End Call To Action -->
 @endif
-@if(false)
+@if($siteConfig['clients_experience'] == '1')
 <!-- Testimonials -->
 <section id="testimonials" class="testimonials section">
     <div class="container">
@@ -871,7 +872,7 @@
 </section>
 <!--/ End Testimonials -->
 @endif
-@if(false)
+@if($siteConfig['services'] == '1')
 <!-- Services -->
 <section id="services" class="services">
     <div class="container-fluid no-padding">
@@ -930,7 +931,7 @@
 </section>
 <!--/ End Services -->
 @endif
-@if(false)
+@if($siteConfig['blog'] == '1')
 <!-- Blog Area -->
 <section id="blog-area" class="blog-area section">
     <div class="container">

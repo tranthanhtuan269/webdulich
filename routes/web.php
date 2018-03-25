@@ -30,6 +30,8 @@ Route::get('categories/{id}', 'SiteController@showCategory')->name('categories.s
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home.home');
+Route::post('home/active', 'HomeController@active')->name('home.active');
+Route::post('home/inactive', 'HomeController@inactive')->name('home.inactive');
 Route::get('/config-site', 'HomeController@config')->name('home.config');
 Route::post('/store', 'HomeController@store')->name('home.store');
 

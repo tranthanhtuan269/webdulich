@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use App\SiteConfig;
 use Session;
+use Response;
 
 class HomeController extends Controller
 {
@@ -83,5 +84,34 @@ class HomeController extends Controller
             return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => $imageName));
         }
         return \Response::json(array('code' => '404', 'message' => 'unsuccess', 'image_url' => ""));
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function active(Request $request)
+    {
+        $input = $request->all();
+        $id = $input['id'];
+        SiteConfig::where('name', $id)->update(['text' => '1']);
+        return Response::json(array('status' => '200', 'message' => 'success'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function inactive(Request $request)
+    {
+        $input = $request->all();
+        $id = $input['id'];
+        SiteConfig::where('name', $id)->update(['text' => '0']);
+        return Response::json(array('status' => '200', 'message' => 'success'));
     }
 }

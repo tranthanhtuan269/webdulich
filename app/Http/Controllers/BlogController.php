@@ -29,7 +29,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        $categories = DB::table('categories')->pluck('name', 'id');
+        return view('blog.create', ['categories' => $categories]);
     }
 
     /**
@@ -40,25 +41,27 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'image' => 'required|max:255'
         ]);
 
         if ($validator->fails()) {
-            return redirect('/blogs')
+            return redirect('/blogs/create')
                 ->withInput()
                 ->withErrors($validator);
         }
 
-        $blog = new blog;
+        $blog = new Blog;
         $blog->title        = $request->title;
         $blog->image        = $request->image;
         $blog->sub_content  = $request->sub_content;
         $blog->content      = $request->content;
         $blog->category_id  = $request->category_id;
         $blog->keyword      = $request->keyword;
+        $blog->created_at   = date("Y-m-d H:i:s");
+        $blog->updated_at   = date("Y-m-d H:i:s");
+
         $blog->save();
 
         return redirect('/blogs');
@@ -86,8 +89,9 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::find($id);
+        $categories = DB::table('categories')->pluck('name', 'id');
         if(!isset($blog)) return view('error.404');
-        return view('blog.edit', ['blog' => $blog]);
+        return view('blog.edit', ['blog' => $blog], ['categories' => $categories]);
     }
 
     /**
@@ -116,6 +120,7 @@ class BlogController extends Controller
                 'content'       => $content,
                 'category_id'   => $category_id,
                 'keyword'       => $keyword,
+                'updated_at'    => date("Y-m-d H:i:s"),
             ]);
 
         return redirect('/blogs');

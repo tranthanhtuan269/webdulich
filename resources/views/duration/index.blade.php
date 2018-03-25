@@ -31,11 +31,11 @@
 			    					<span class="btn btn-success active-btn" data-id="{{ $duration->id }}">
 						                <i class="fa fa-refresh" aria-hidden="true"></i> Active
 						            </span>
-						            <span class="btn btn-default inactive-btn hide" data-id="{{ $duration->id }}">
+						            <span class="btn btn-default inactive-btn d-none" data-id="{{ $duration->id }}">
 						                <i class="fa fa-power-off" aria-hidden="true"></i> Inactive
 						            </span>
 			    				@else
-			    					<span class="btn btn-success active-btn hide" data-id="{{ $duration->id }}">
+			    					<span class="btn btn-success active-btn d-none" data-id="{{ $duration->id }}">
 						                <i class="fa fa-refresh" aria-hidden="true"></i> Active
 						            </span>
 			    					<span class="btn btn-default inactive-btn" data-id="{{ $duration->id }}">

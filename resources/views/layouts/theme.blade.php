@@ -138,7 +138,7 @@
 									<li><a href="#">Trip package<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($categories as $category)
-											<li><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->name }}</a></li>
+											<li><a href="{{ url('/') }}/categories/{{ $category->id }}">{{ $category->name }}</a></li>
 											@endforeach
 										</ul>
 									</li>
@@ -164,7 +164,7 @@
 									<li><a href="#">Blogs<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($categories as $category)
-											<li><a href="{{ url('/') }}/category/{{ $category->id }}">{{ $category->name }}</a></li>
+											<li><a href="{{ url('/') }}/categories/{{ $category->id }}">{{ $category->name }}</a></li>
 											@endforeach
 										</ul>
 									</li>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Blog;
 use Response;
 use DB;
 
@@ -75,9 +76,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
-        if(!isset($category)) return view('error.404');
-        return view('category.show', ['category' => $category]);
+        $categories = Category::all();
+        $blogs = Blog::where('category_id', $id)->paginate(6);
+        return view('category.show', ['blogs' => $blogs, 'categories' => $categories]);
     }
 
     /**

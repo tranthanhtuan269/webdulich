@@ -23,6 +23,7 @@ Route::post('postJCrop', 'HomeController@postJCrop')->name('home.postJCrop');
 Route::get('/test', 'SiteController@test');
 Route::get('/getToken', 'HomeController@getToken');
 Route::post('/postImage', 'HomeController@postImage');
+Route::post('/ajaxpro', 'HomeController@ajaxpro');
 
 Auth::routes();
 

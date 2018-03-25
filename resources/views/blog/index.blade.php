@@ -23,18 +23,18 @@
 			    		@foreach($blogs as $blog)
 			    		<tr>
 			    			<td>{{ $blog->id }}</td>
-			    			<td>{{ $blog->name }}</td>
+			    			<td>{{ $blog->title }}</td>
 			    			<td>
 			    				<form class="delete-form" action="{{ url('blogs/'.$blog->id) }}" method="POST">
 			    				@if($blog->active == 1)
 			    					<span class="btn btn-success active-btn" data-id="{{ $blog->id }}">
 						                <i class="fa fa-refresh" aria-hidden="true"></i> Active
 						            </span>
-						            <span class="btn btn-default inactive-btn hide" data-id="{{ $blog->id }}">
+						            <span class="btn btn-default inactive-btn d-none" data-id="{{ $blog->id }}">
 						                <i class="fa fa-power-off" aria-hidden="true"></i> Inactive
 						            </span>
 			    				@else
-			    					<span class="btn btn-success active-btn hide" data-id="{{ $blog->id }}">
+			    					<span class="btn btn-success active-btn d-none" data-id="{{ $blog->id }}">
 						                <i class="fa fa-refresh" aria-hidden="true"></i> Active
 						            </span>
 			    					<span class="btn btn-default inactive-btn" data-id="{{ $blog->id }}">

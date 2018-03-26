@@ -31,7 +31,7 @@
 	<section id="blog-area" class="blog-area archive classic single section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-12">
+				<div class="col-lg-9 col-12">
 					<div class="row">
 						<div class="col-12">
 							<!-- Single Blog -->
@@ -76,7 +76,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-3 col-12">
 					<!-- Blog Sidebar -->
 					<div class="sidebar-main">
 						@if(false)

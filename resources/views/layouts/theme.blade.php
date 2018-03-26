@@ -64,7 +64,9 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-12">
 						<!-- Text -->
+						@if(strlen($siteConfig['site_name']) > 0)
 						<p>Welcome To {{ $siteConfig['site_name'] }} Website</p>
+						@endif
 						<!--/ End Text -->
                     </div>
 					<div class="col-lg-6 col-md-6 col-12">
@@ -96,6 +98,7 @@
 					<div class="col-lg-9 col-md-9 col-12">
 						<!-- Header Widget -->
 						<div class="header-widget">
+							@if(strlen($siteConfig['address1']) > 0 &&  strlen($siteConfig['address2']) > 0)
 							<!-- Single Widget -->
 							<div class="single-widget">
 								<img src="{{ url('/') }}/public/images/location-icon.png" alt="#">
@@ -103,6 +106,8 @@
 								<p>{{ $siteConfig['address2'] }}</p>
 							</div>
 							<!--/ End Single Widget -->
+							@endif
+							@if(strlen($siteConfig['phone1']) > 0 && strlen($siteConfig['phone2']) > 0)
 							<!-- Single Widget -->
 							<div class="single-widget">
 								<img src="{{ url('/') }}/public/images/call-icon.png" alt="#">
@@ -110,6 +115,8 @@
 								<p>{{ $siteConfig['phone2'] }}</p>
 							</div>
 							<!--/ End Single Widget -->
+							@endif
+							@if(strlen($siteConfig['open_time']) > 0 && strlen($siteConfig['close_time']) > 0)
 							<!-- Single Widget -->
 							<div class="single-widget">
 								<img src="{{ url('/') }}/public/images/clock-icon.png" alt="#">
@@ -117,6 +124,7 @@
 								<p>{{ $siteConfig['close_time'] }}</p>
 							</div>
 							<!--/ End Single Widget -->
+							@endif
 						</div>
 						<!--/ End Header Widget -->
 					</div>

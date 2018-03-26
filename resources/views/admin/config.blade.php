@@ -47,6 +47,9 @@
 						    	</div>
 						  	</div>
 						  	<div class="form-group row">
+								<label for="message" class="col-sm-offset-2 col-sm-10 text-danger"><b><u>Chú ý:</u></b> Cả 2 địa chỉ để trống sẽ không hiện địa chỉ </label>
+							</div>
+						  	<div class="form-group row">
 						    	<label for="inputPhone1" class="col-sm-2 control-label">Phone 1</label>
 						    	<div class="col-sm-10">
 						      		<input type="text" class="form-control" id="inputPhone1" name="inputPhone1" placeholder="Phone1" value="{{ $siteConfig['phone1'] }}">
@@ -59,6 +62,9 @@
 						    	</div>
 						  	</div>
 						  	<div class="form-group row">
+								<label for="message" class="col-sm-offset-2 col-sm-10 text-danger"><b><u>Chú ý:</u></b> Cả 2 số điện thoại để trống sẽ không hiện số điện thoại </label>
+							</div>
+						  	<div class="form-group row">
 						    	<label for="inputOpenTime" class="col-sm-2 control-label">Open Time</label>
 						    	<div class="col-sm-10">
 						      		<input type="text" class="form-control" id="inputOpenTime" name="inputOpenTime" placeholder="Mon -Fri: 9:00-19:00" value="{{ $siteConfig['open_time'] }}">
@@ -70,6 +76,9 @@
 						      		<input type="text" class="form-control" id="inputCloseTime" name="inputCloseTime" placeholder="Sunday Closed" value="{{ $siteConfig['close_time'] }}">
 						    	</div>
 						  	</div>
+						  	<div class="form-group row">
+								<label for="message" class="col-sm-offset-2 col-sm-10 text-danger"><b><u>Chú ý:</u></b> Cả thời gian mở cửa và đóng cửa để trống sẽ không hiện thời gian </label>
+							</div>
 						  	<div class="form-group row">
 						    	<div class="col-sm-offset-2 col-sm-10">
 						      		<button type="submit" class="btn btn-default">Save</button>

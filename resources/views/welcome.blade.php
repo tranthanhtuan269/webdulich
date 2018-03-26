@@ -944,48 +944,25 @@
             </div>   
         </div>
         <div class="row">
+            <?php
+            $blogs = \App\Blog::take(3)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+            ?>
+            @foreach($blogs as $blog)
             <div class="col-lg-4 col-md-4 col-12">
                 <!-- Single Blog -->
                 <div class="single-blog">
                     <div class="blog-head">
-                        <img src="http://via.placeholder.com/850x550" alt="#">
+                        <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                     </div>
                     <div class="blog-content">
-                        <span>Jan 31 2018</span>
-                        <h4><a href="blog-single.html">Spring in the air and the Romantic conola ride in Vinece</a></h4>
-                        <a href="blog-single.html" class="btn">Read More</a>
+                        <span>{{ date('M d Y', strtotime($blog->updated_at)) }}</span>
+                        <h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+                        <a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Read More</a>
                     </div>
                 </div>
                 <!--/ End Single Blog -->
             </div>
-            <div class="col-lg-4 col-md-4 col-12">
-                <!-- Single Blog -->
-                <div class="single-blog">
-                    <div class="blog-head">
-                        <img src="http://via.placeholder.com/850x550" alt="#">
-                    </div>
-                    <div class="blog-content">
-                        <span>Jan 31 2018</span>
-                        <h4><a href="blog-single.html">Spring in the air and the Romantic conola ride in Vinece</a></h4>
-                        <a href="blog-single.html" class="btn">Read More</a>
-                    </div>
-                </div>
-                <!--/ End Single Blog -->
-            </div>
-            <div class="col-lg-4 col-md-4 col-12">
-                <!-- Single Blog -->
-                <div class="single-blog">
-                    <div class="blog-head">
-                        <img src="http://via.placeholder.com/850x550" alt="#">
-                    </div>
-                    <div class="blog-content">
-                        <span>Jan 31 2018</span>
-                        <h4><a href="blog-single.html">Spring in the air and the Romantic conola ride in Vinece</a></h4>
-                        <a href="blog-single.html" class="btn">Read More</a>
-                    </div>
-                </div>
-                <!--/ End Single Blog -->
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

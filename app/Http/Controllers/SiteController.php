@@ -28,8 +28,9 @@ class SiteController extends Controller
 
     public function showBlog($id)
     {
+        $categories = Category::all();
         $blog = Blog::find($id);
         if(!isset($blog)) return view('error.404');
-        return view('blog.show', ['blog' => $blog]);
+        return view('blog.show', ['blog' => $blog, 'categories' => $categories]);
     }
 }

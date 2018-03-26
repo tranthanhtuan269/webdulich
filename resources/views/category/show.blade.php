@@ -32,12 +32,12 @@
 								<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 							</div>
 							<div class="blog-content">
-								<h4><a href="{{ url('/') }}/blogs/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+								<h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
 								<div class="meta">{{ date('d-M-Y', strtotime($blog->updated_at)) }}</div>
 								<?php 
 									echo $blog->sub_content;
 								?>
-								<a href="{{ url('/') }}/blogs/{{ $blog->id }}" class="btn">Read More</a>
+								<a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Read More</a>
 							</div>
 						</div>
 						<!--/ End Single Blog -->
@@ -81,7 +81,7 @@
 						<h2>Categories</h2>
 						<ul class="categories-inner">
 							@foreach($categories as $category)
-							<li><a href="{{ url('/') }}/categories/{{ $category->id }}">{{ $category->name }}</a></li>
+							<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
 							@endforeach
 						</ul>
 					</div>

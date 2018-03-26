@@ -24,8 +24,6 @@ Route::get('/test', 'SiteController@test');
 Route::post('/postImage', 'HomeController@postImage');
 Route::post('/ajaxpro', 'HomeController@ajaxpro');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home.home');
 Route::post('home/active', 'HomeController@active')->name('home.active');
 Route::post('home/inactive', 'HomeController@inactive')->name('home.inactive');
@@ -67,5 +65,7 @@ Route::post('blogs/active', 'BlogController@active')->name('blogs.active');
 Route::post('blogs/inactive', 'BlogController@inactive')->name('blogs.inactive');
 
 // add latest
-Route::get('blogs/{id}', 'SiteController@showBlog')->name('blogs.showBlog');
-Route::get('categories/{id}', 'SiteController@showCategory')->name('categories.showCategory');
+Route::get('blogs/view/{id}', 'SiteController@showBlog')->name('blogs.showBlog');
+Route::get('categories/view/{id}', 'SiteController@showCategory')->name('categories.showCategory');
+
+Auth::routes();

@@ -79,6 +79,7 @@
 				<div class="col-lg-4 col-12">
 					<!-- Blog Sidebar -->
 					<div class="sidebar-main">
+						@if(false)
 						<!-- Search -->
 						<div class="single-widget search">
 							<h2>Search</h2>
@@ -88,19 +89,18 @@
 							</form>
 						</div>
 						<!--/ End Search -->
+						@endif
 						<!-- Categories -->
 						<div class="single-widget categories">
 							<h2>Categories</h2>
 							<ul class="categories-inner">
-								<li><a href="#">Estern Europe Tour<span>(6)</span></a></li>
-								<li><a href="#">Australian Tour<span>(3)</span></a></li>
-								<li><a href="#">Treasure of Europe<span>(7)</span></a></li>
-								<li><a href="#">Classic Thailand Tour<span>(8)</span></a></li>
-								<li><a href="#">Triangle of Europe<span>(3)</span></a></li>
-								<li><a href="#">Maldives Beach<span>(2)</span></a></li>
+								@foreach($categories as $category)
+								<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+								@endforeach
 							</ul>
 						</div>
 						<!--/ End Categories -->
+						@if(false)
 						<!-- Other Trips -->
 						<div class="single-widget other-trips">
 							<h2>Other Trips</h2>
@@ -135,6 +135,8 @@
 							</div>
 						</div>
 						<!--/ End Other Trips -->
+						@endif
+						@if(false)
 						<!-- Tags -->
 						<div class="single-widget tags">
 							<h2>Recent Tags</h2>
@@ -158,6 +160,7 @@
 							</div>
 						</div>
 						<!--/ End Tags -->
+						@endif
 					</div>
 					<!--/ End Blog Sidebar -->
 				</div>

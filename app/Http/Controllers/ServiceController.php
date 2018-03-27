@@ -11,6 +11,8 @@ use DB;
 
 class ServiceController extends Controller
 {
+
+    public $iconList = ['car', 'motorcycle', 'bicycle', 'life-ring', 'plane', 'utensils', 'birthday-cake'];
     /**
      * Create a new controller instance.
      *
@@ -39,7 +41,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service.create');
+        return view('service.create', ['iconList' => $this->iconList]);
     }
 
     /**
@@ -94,7 +96,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         if(!isset($service)) return view('error.404');
-        return view('service.edit', ['service' => $service]);
+        return view('service.edit', ['service' => $service, 'iconList' => $this->iconList]);
     }
 
     /**
@@ -107,8 +109,11 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $name = $input['name'];
-        Service::where('id', $id)->update(['name' => $name]);
+        // dd($input);
+        unset($input['_method']);
+        unset($input['_token']);
+        unset($input['image-img']);
+        Service::where('id', $id)->update($input);
 
         return redirect('/services');
     }

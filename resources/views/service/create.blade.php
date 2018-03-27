@@ -10,7 +10,7 @@
             <div class="alert alert-primary mt-3" role="alert">
 			  	Create New Service
 			</div>
-            {{ Form::open(['route' => 'services.store']) }}
+            
             @if($errors->any())
    				<div class="form-group">
 					<label for="message" class="col-sm-offset-2 col-sm-10 text-danger">{{ $errors->first() }} </label>
@@ -22,18 +22,14 @@
 					<div class="form-group row">
 						{!! Form::label('icon', 'Select a icon for service', ['class' => 'col-md-12 control-label']) !!}
 					    <div class="col-md-12">
-					    	<span class="service" data-icon="car"><i class="fa fa-car icon-size"></i></span>
-					    	<span class="service" data-icon="motorcycle"><i class="fa fa-motorcycle icon-size"></i></span>
-					    	<span class="service" data-icon="bicycle"><i class="fa fa-bicycle icon-size"></i></span>
-					    	<span class="service" data-icon="life-ring"><i class="fa fa-life-ring icon-size"></i></span>
-					    	<span class="service" data-icon="plane"><i class="fa fa-plane icon-size"></i></span>
-					    	<span class="service" data-icon="utensils"><i class="fa fa-utensils icon-size"></i></span>
-					    	<span class="service" data-icon="birthday-cake"><i class="fa fa-birthday-cake icon-size"></i></span>
+					    	@foreach($iconList as $icon)
+					    	<span class="service" data-icon="{{ $icon }}"><i class="fa fa-{{ $icon }} icon-size"></i></span>
+					    	@endforeach
 					    </div>
 					</div>
 				</div>
 				<div class="col-sm-8">
-					<form class="form-horizontal">
+					{{ Form::open(['route' => 'services.store', 'class' => 'form-horizontal']) }}
 						<input type="hidden" id="image_field" name="image" value="">
 						<input type="hidden" id="icon_field" name="icon" value="">
 						<input type="file" name="image-img" id="image-img" style="display: none;">
@@ -66,11 +62,9 @@
 					            </a>
 					    	</div>
 					  	</div>
-				  	</form>
+				  	{!! Form::close() !!}
 				</div>
 			</div>
-		  	
-            {!! Form::close() !!}
         </div>
     </div>
 </div>

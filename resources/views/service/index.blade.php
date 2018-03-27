@@ -23,7 +23,7 @@
 			    	<tbody>
 			    		@foreach($services as $service)
 			    		<tr>
-			    			<td>{{ $service->id }}</td>
+			    			<td>{{ $service->icon }}</td>
 			    			<td>{{ $service->name }}</td>
 			    			<td>
 			    				<form class="delete-form" action="{{ url('services/'.$service->id) }}" method="POST">

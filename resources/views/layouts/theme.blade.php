@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="{{ url('/') }}/public/css/reset.css">
 	<link rel="stylesheet" href="{{ url('/') }}/public/css/style.css">
     <link rel="stylesheet" href="{{ url('/') }}/public/css/responsive.css">
+    <link rel="stylesheet" href="{{ url('/') }}/public/css/customize.css">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>

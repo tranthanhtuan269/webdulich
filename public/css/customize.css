@@ -1,0 +1,9 @@
+.icon-size{
+	font-size: 32px;
+	cursor: pointer;
+	color: #ccc;
+}
+
+.selected .icon-size{
+	color: red;
+}

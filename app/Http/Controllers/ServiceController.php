@@ -60,8 +60,12 @@ class ServiceController extends Controller
                 ->withErrors($validator);
         }
 
-        $service = new Service;
-        $service->name = $request->name;
+        $service                = new Service;
+        $service->name          = $request->name;
+        $service->image          = $request->image;
+        $service->icon          = $request->icon;
+        $service->sub_content   = $request->sub_content;
+        $service->content       = $request->content;
         $service->save();
 
         return redirect('/services');

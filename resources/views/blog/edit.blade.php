@@ -120,7 +120,7 @@
         'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
         'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
     } );
-    var html_sub_content = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', $blog->sub_content); ?>';
+    var html_sub_content = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $blog->sub_content)); ?>';
     CKEDITOR.instances['sub_content'].setData(html_sub_content);
     CKEDITOR.replace( 'content', {
         'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
@@ -130,7 +130,7 @@
         'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
         'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
     } );
-    var html_content = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', $blog->content); ?>';
+    var html_content = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $blog->content)); ?>';
     CKEDITOR.instances['content'].setData(html_content);
 
     $(document).ready(function(){

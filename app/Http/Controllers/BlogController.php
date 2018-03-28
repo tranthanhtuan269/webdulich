@@ -52,11 +52,14 @@ class BlogController extends Controller
                 ->withErrors($validator);
         }
 
+        $sub_content    = $this->removeSpace($request->sub_content);
+        $content        = $this->removeSpace($request->content);
+
         $blog = new Blog;
         $blog->title        = $request->title;
         $blog->image        = $request->image;
-        $blog->sub_content  = $request->sub_content;
-        $blog->content      = $request->content;
+        $blog->sub_content  = $sub_content;
+        $blog->content      = $content;
         $blog->category_id  = $request->category_id;
         $blog->keyword      = $request->keyword;
         $blog->created_at   = date("Y-m-d H:i:s");
@@ -65,6 +68,18 @@ class BlogController extends Controller
         $blog->save();
 
         return redirect('/blogs');
+    }
+
+    public function removeSpace($output){
+        $output = str_replace(array("\r\n", "\r"), "\n", $output);
+        $lines = explode("\n", $output);
+        $new_lines = array();
+
+        foreach ($lines as $i => $line) {
+            if(!empty($line))
+                $new_lines[] = trim($line);
+        }
+        return implode($new_lines);
     }
 
     /**
@@ -89,9 +104,17 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::find($id);
+        $sub_content    = $this->removeSpace($blog->sub_content);
+        $content        = $this->removeSpace($blog->content);
+        Blog::where('id', $id)
+            ->update([
+                'sub_content'   => $sub_content,
+                'content'       => $content
+            ]);
+        $blog = Blog::find($id);
         $categories = DB::table('categories')->pluck('name', 'id');
         if(!isset($blog)) return view('error.404');
-        return view('blog.edit', ['blog' => $blog], ['categories' => $categories]);
+        return view('blog.edit', ['blog' => $blog ,'categories' => $categories]);
     }
 
     /**
@@ -107,8 +130,8 @@ class BlogController extends Controller
 
         $title          = $input['title'];
         $image          = $input['image'];
-        $sub_content    = $input['sub_content'];
-        $content        = $input['content'];
+        $sub_content    = $this->removeSpace($input['sub_content']);
+        $content        = $this->removeSpace($input['content']);
         $category_id    = $input['category_id'];
         $keyword        = $input['keyword'];
 

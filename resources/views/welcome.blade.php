@@ -24,7 +24,7 @@
                         <li class="list-group-item">
                             
                             @foreach($blogs as $blog)
-                            <div class="col-lg-4 col-md-4 col-12">
+                            <div class="col-lg-3 col-md-3 col-12">
                                 <!-- Single Blog -->
                                 <div class="single-blog">
                                     <div class="blog-head">

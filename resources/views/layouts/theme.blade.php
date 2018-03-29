@@ -144,6 +144,7 @@
 								<ul class="nav menu">
 									<li class="active"><a href="{{ url('/') }}">Home</a>
 									</li>
+									@if(false)
 									<li><a href="#">Trip package<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($categories as $category)
@@ -151,6 +152,8 @@
 											@endforeach
 										</ul>
 									</li>
+									@endif
+									@if(false)
 									<li><a href="#">Services<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($services as $service)
@@ -158,6 +161,7 @@
 											@endforeach
 										</ul>
 									</li>
+									@endif
 									@if(false)
 									<li><a href="#">Pages<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">

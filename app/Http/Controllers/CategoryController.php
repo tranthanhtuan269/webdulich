@@ -76,7 +76,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $categories = Category::all();
+        $categories = Category::where('active', 1)->get();
         $blogs = Blog::where('category_id', $id)->paginate(6);
         return view('category.show', ['blogs' => $blogs, 'categories' => $categories]);
     }

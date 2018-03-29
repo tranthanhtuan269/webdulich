@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+use App\Category;
 use App\Blog;
 use App\Helper\Helper;
 use Response;
@@ -30,7 +31,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $categories = DB::table('categories')->pluck('name', 'id');
+        $categories = DB::table('categories')->where('active', 1)->pluck('name', 'id');
         return view('blog.create', ['categories' => $categories]);
     }
 
@@ -80,8 +81,9 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::find($id);
+        $categories = Category::where('active', 1)->get();
         if(!isset($blog)) return view('error.404');
-        return view('blog.show', ['blog' => $blog]);
+        return view('blog.show', ['blog' => $blog, 'categories' => $categories]);
     }
 
     /**
@@ -101,7 +103,7 @@ class BlogController extends Controller
                 'content'       => $content
             ]);
         $blog = Blog::find($id);
-        $categories = DB::table('categories')->pluck('name', 'id');
+        $categories = DB::table('categories')->where('active', 1)->pluck('name', 'id');
         if(!isset($blog)) return view('error.404');
         return view('blog.edit', ['blog' => $blog,'categories' => $categories]);
     }

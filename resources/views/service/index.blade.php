@@ -15,7 +15,7 @@
 			  	<table class="table table-hover">
 			    	<thead>
 			    		<tr>
-			    			<th>#</th>
+			    			<th>Icon</th>
 			    			<th>Name</th>
 			    			<th>Action</th>
 			    		</tr>
@@ -23,7 +23,7 @@
 			    	<tbody>
 			    		@foreach($services as $service)
 			    		<tr>
-			    			<td>{{ $service->id }}</td>
+			    			<td><span class="service selected" data-icon="{{ $service->icon }}"><i class="fa fa-{{ $service->icon }} icon-size"></i></span></td>
 			    			<td>{{ $service->name }}</td>
 			    			<td>
 			    				<form class="delete-form" action="{{ url('services/'.$service->id) }}" method="POST">

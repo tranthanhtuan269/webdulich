@@ -114,7 +114,7 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         $categories = DB::table('categories')->pluck('name', 'id');
         if(!isset($blog)) return view('error.404');
-        return view('blog.edit', ['blog' => $blog ,'categories' => $categories]);
+        return view('blog.edit', ['blog' => $blog,'categories' => $categories]);
     }
 
     /**

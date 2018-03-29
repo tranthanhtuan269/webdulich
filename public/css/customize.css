@@ -7,3 +7,17 @@
 .selected .icon-size{
 	color: #333;
 }
+
+.section {
+	padding: 45px 0;
+}
+
+.list-group-category{
+	margin: 20px 0;
+}
+
+.list-group-category > .active{
+	background-color: #FF7550;
+	border-color: #FF7550;
+	text-transform: uppercase;
+}

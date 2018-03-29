@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Blog;
+user App\Helper\Helper;
 use Response;
 use DB;
 
@@ -52,8 +53,8 @@ class BlogController extends Controller
                 ->withErrors($validator);
         }
 
-        $sub_content    = $this->removeSpace($request->sub_content);
-        $content        = $this->removeSpace($request->content);
+        $sub_content    = Helper::removeSpace($request->sub_content);
+        $content        = Helper::removeSpace($request->content);
 
         $blog = new Blog;
         $blog->title        = $request->title;
@@ -68,18 +69,6 @@ class BlogController extends Controller
         $blog->save();
 
         return redirect('/blogs');
-    }
-
-    public function removeSpace($output){
-        $output = str_replace(array("\r\n", "\r"), "\n", $output);
-        $lines = explode("\n", $output);
-        $new_lines = array();
-
-        foreach ($lines as $i => $line) {
-            if(!empty($line))
-                $new_lines[] = trim($line);
-        }
-        return implode($new_lines);
     }
 
     /**
@@ -104,8 +93,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $blog = Blog::find($id);
-        $sub_content    = $this->removeSpace($blog->sub_content);
-        $content        = $this->removeSpace($blog->content);
+        $sub_content    = Helper::removeSpace($blog->sub_content);
+        $content        = Helper::removeSpace($blog->content);
         Blog::where('id', $id)
             ->update([
                 'sub_content'   => $sub_content,
@@ -130,8 +119,8 @@ class BlogController extends Controller
 
         $title          = $input['title'];
         $image          = $input['image'];
-        $sub_content    = $this->removeSpace($input['sub_content']);
-        $content        = $this->removeSpace($input['content']);
+        $sub_content    = Helper::removeSpace($input['sub_content']);
+        $content        = Helper::removeSpace($input['content']);
         $category_id    = $input['category_id'];
         $keyword        = $input['keyword'];
 

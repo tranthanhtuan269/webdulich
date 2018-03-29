@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Service;
+use App\Helper\Helper;
 use Response;
 use DB;
 
@@ -64,10 +65,10 @@ class ServiceController extends Controller
 
         $service                = new Service;
         $service->name          = $request->name;
-        $service->image          = $request->image;
+        $service->image         = $request->image;
         $service->icon          = $request->icon;
-        $service->sub_content   = $request->sub_content;
-        $service->content       = $request->content;
+        $service->sub_content   = Helper::removeSpace($request->sub_content);
+        $service->content       = Helper::removeSpace($request->content);
         $service->save();
 
         return redirect('/services');
@@ -113,6 +114,8 @@ class ServiceController extends Controller
         unset($input['_method']);
         unset($input['_token']);
         unset($input['image-img']);
+        $input['sub_content']   = Helper::removeSpace($input['sub_content']);
+        $input['content']       = Helper::removeSpace($input['content']);
         Service::where('id', $id)->update($input);
 
         return redirect('/services');

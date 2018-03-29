@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Blog;
-user App\Helper\Helper;
+use App\Helper\Helper;
 use Response;
 use DB;
 

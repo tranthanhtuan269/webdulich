@@ -18,6 +18,8 @@ $(document).ready(function(){
 		page = 'home';
 	}else if(fullUrl.indexOf("blogs") > -1){
 		page = 'blogs';
+	}else if(fullUrl.indexOf("partners") > -1){
+		page = 'partners';
 	}
 
 	$.ajaxSetup({

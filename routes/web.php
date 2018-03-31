@@ -85,6 +85,10 @@ Route::resource('blogs', 'BlogController');
 Route::post('blogs/active', 'BlogController@active')->name('blogs.active');
 Route::post('blogs/inactive', 'BlogController@inactive')->name('blogs.inactive');
 
+Route::resource('partners', 'PartnerController');
+Route::post('partners/active', 'PartnerController@active')->name('partners.active');
+Route::post('partners/inactive', 'PartnerController@inactive')->name('partners.inactive');
+
 
 
 // add latest

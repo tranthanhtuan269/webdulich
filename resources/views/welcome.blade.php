@@ -25,6 +25,7 @@
             <div class="col-12">
                 <?php
                     $categories = \App\Category::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
+                    $partners   = \App\Partner::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
                     ?>
                 @foreach($categories as $category)
                     <?php
@@ -58,5 +59,26 @@
             </div>
         </div>
     </div>
+</section>
+<section id="top-destination" class="top-destination section">
+    <!-- Clients -->
+    <div id="clients" class="clients section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="clients-slider">
+                        @foreach($partners as $partner)
+                        <!-- Single Clients -->
+                        <div class="single-clients">
+                            <a href="{{ $partner->url }}" target="_blank"><img src="{{ url('/') }}/public/images/{{ $partner->image }}" alt="{{ $partner->name }}"></a>
+                        </div>
+                        <!--/ End Single Clients -->
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Clients -->
 </section>
 @endsection

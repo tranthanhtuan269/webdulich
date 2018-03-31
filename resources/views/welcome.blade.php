@@ -3,9 +3,6 @@
 @section('title', 'dulich.gmon.vn')
 
 @section('content')
-<?php 
-    $url_path = 'http://dulich.gmon.vn';
-    ?>
 <section id="hero-area" class="hero-area overlay" data-stellar-background-ratio="0.7">
     <div class="hero-main">
        <div class="container">
@@ -41,12 +38,12 @@
                                 <!-- Single Blog -->
                                 <div class="single-blog">
                                     <div class="blog-head">
-                                        <img src="{{ $url_path }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                        <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                     </div>
                                     <div class="blog-content">
                                         <span>{{ date('d-m-Y', strtotime($blog->updated_at)) }}</span>
-                                        <h4><a href="{{ $url_path }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
-                                        <a href="{{ $url_path }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
+                                        <h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+                                        <a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
                                     </div>
                                 </div>
                                 <!--/ End Single Blog -->

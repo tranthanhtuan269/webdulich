@@ -30,7 +30,9 @@ class SiteController extends Controller
     {
         $categories = Category::all();
         $blog = Blog::find($id);
+        $blogs = Blog::where('active', 1)->select('id', 'title', 'image')->take(10)->orderBy('id', 'desc')->get();
+        // dd($blogs);
         if(!isset($blog)) return view('error.404');
-        return view('blog.show', ['blog' => $blog, 'categories' => $categories]);
+        return view('blog.show', ['blog' => $blog, 'blogs' => $blogs, 'categories' => $categories]);
     }
 }

@@ -11,11 +11,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<ul class="list">
-					<li><a href="{{ url('/') }}">Home</a></li>
-					<li><a href="{{ url('/') }}/contact-us">Contact</a></li>
-				</ul>
-				<h2>Contact Us</h2>
 			</div>
 		</div>
 	</div>
@@ -28,8 +23,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="title-line center">
-					<p>our information</p>
-					<h2>Contact <span>Us</span></h2>
+					<h2>Liên hệ</h2>
 				</div>
 			</div>
 		</div>
@@ -60,47 +54,13 @@
 						</div>
 						<div class="col-md-12">
 							<div class="form-group button">	
-								<button type="submit" class="btn primary">Send Message</button>
+								<button type="submit" class="btn primary">Gửi email</button>
 							</div>
 						</div>
 					</div>
 				</form>
 			</div>
 			<!--/ End Contact Form -->
-			<div class="col-lg-12">
-				<div class="contact">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-12">
-							<!-- Single Contact -->
-							<div class="single-contact">
-								<img src="{{ url('/') }}/public/images/location-icon.png" alt="#">
-								<h4>Our Location</h4>
-								<p>87 Rue Jeanne St, House 20, Block E, Nancy Middlesex, London</p>
-							</div>
-							<!--/ End Single Contact -->
-						</div>
-						<div class="col-lg-4 col-md-4 col-12">
-							<!-- Single Contact -->
-							<div class="single-contact">
-								<img src="{{ url('/') }}/public/images/call-icon.png" alt="#">
-								<h4>Contact Us</h4>
-								<p>Telephone: +012 345 678990</p>
-								<p><a href="mailto:info@yourwebsite.com">Email: info@yourwebsite.com</a></p>
-							</div>
-							<!--/ End Single Contact -->
-						</div>
-						<div class="col-lg-4 col-md-4 col-12">
-							<!-- Single Contact -->
-							<div class="single-contact">
-								<img src="{{ url('/') }}/public/images/clock-icon.png" alt="#">
-								<h4>Working Times</h4>
-								<p>Monday - Friday: 9:00AM -19:00PM<span>Sunday Close</span></p>
-							</div>
-							<!--/ End Single Contact -->
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>

@@ -46,6 +46,7 @@
 										echo $blog->content;
 										?>
 								</div>
+								@if(false)
 								<div class="content-bottom">
 									<div class="row">
 										<div class="col-lg-6 col-md-6 col-12">
@@ -71,6 +72,7 @@
 										</div>
 									</div>
 								</div>
+								@endif
 							</div>
 							<!--/ End Single Blog -->
 						</div>
@@ -175,31 +177,20 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="clients-slider">
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients active">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
-						<!-- Single Clients -->
-						<div class="single-clients">
-							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
-						</div>
-						<!--/ End Single Clients -->
+						@foreach($blogs as $b) 
+							<div class="col-lg-12 col-12">
+								<!-- Single Blog -->
+								<div class="single-blog">
+									<div class="blog-head">
+										<img src="{{ url('/') }}/public/images/{{ $b->image }}" alt="{{ $b->title }}">
+									</div>
+									<div class="blog-content">
+										<div><a href="{{ url('/') }}/blogs/view/{{ $b->id }}">{{ $b->title }}</a></div>
+									</div>
+								</div>
+								<!--/ End Single Blog -->
+							</div>
+						@endforeach
 					</div>
 				</div>
 			</div>

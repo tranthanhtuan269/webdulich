@@ -43,7 +43,7 @@
                                         <img src="{{ $url_path }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                     </div>
                                     <div class="blog-content">
-                                        <span>{{ date('M d Y', strtotime($blog->updated_at)) }}</span>
+                                        <span>{{ date('d-m-Y', strtotime($blog->updated_at)) }}</span>
                                         <h4><a href="{{ $url_path }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
                                         <a href="{{ $url_path }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
                                     </div>
@@ -56,11 +56,6 @@
                     @endif
                 @endforeach
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            
         </div>
     </div>
 </section>

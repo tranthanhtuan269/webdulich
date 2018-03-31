@@ -41,7 +41,7 @@
 								</div>
 								<div class="blog-content">
 									<h4><a href="{{ url('/') }}/blogs/{{ $blog->id }}">{{ $blog->title }}</a></h4>
-									<div class="meta">{{ date('d-M-Y', strtotime($blog->updated_at)) }}</div>
+									<div class="meta">{{ date('d-m-Y', strtotime($blog->updated_at)) }}</div>
 									<?php 
 										echo $blog->content;
 										?>

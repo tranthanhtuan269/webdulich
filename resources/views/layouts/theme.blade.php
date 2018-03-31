@@ -59,31 +59,6 @@
 
 	<!-- Header Area -->
 	<header id="site-header" class="site-header">
-		<!-- Start Topbar -->
-        <div class="topbar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-						<!-- Text -->
-						@if(strlen($siteConfig['site_name']) > 0)
-						<p>Welcome To {{ $siteConfig['site_name'] }} Website</p>
-						@endif
-						<!--/ End Text -->
-                    </div>
-					<div class="col-lg-6 col-md-6 col-12">
-						<!-- Social -->
-						<ul class="social">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						</ul>
-						<!--/ End Social -->
-                    </div>
-				</div>
-            </div>
-        </div>
-		<!--/ End Topbar -->
 		<!-- Middle Header -->
 		<div class="middle-header">
 			<div class="container">
@@ -142,44 +117,23 @@
 						<div class="main-menu">
 							<nav class="navigation">
 								<ul class="nav menu">
-									<li class="active"><a href="{{ url('/') }}">Home</a>
+									<li class="active"><a href="{{ url('/') }}">Trang chủ</a>
 									</li>
-									@if(false)
-									<li><a href="#">Trip package<i class="fa fa-angle-down"></i></a>
+									<li><a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($categories as $category)
 											<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
 											@endforeach
 										</ul>
 									</li>
-									@endif
-									<li><a href="#">Services<i class="fa fa-angle-down"></i></a>
+									<li><a href="#">Dịch vụ<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($services as $service)
 											<li><a href="{{ url('/') }}/service/view/{{ $service->id }}">{{ $service->name }}</a></li>
 											@endforeach
 										</ul>
 									</li>
-									@if(false)
-									<li><a href="#">Pages<i class="fa fa-angle-down"></i></a>
-										<ul class="dropdown">
-											<li><a href="about.html">About Us</a></li>
-											<li><a href="destinations.html">Destinations</a></li>
-											<li><a href="team.html">Team</a></li>
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="faq.html">Faq</a></li>
-											<li><a href="404.html">404 Page</a></li>
-										</ul>
-									</li>
-									@endif
-									<li><a href="#">Blogs<i class="fa fa-angle-down"></i></a>
-										<ul class="dropdown">
-											@foreach($categories as $category)
-											<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
-											@endforeach
-										</ul>
-									</li>
-									<li><a href="{{ url('/') }}/contacts/create">Contact Us</a></li>
+									<li><a href="{{ url('/') }}/contacts/create">Liên hệ</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -203,12 +157,12 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-widget">
-							<h2>Company</h2>
+							<h2>Công ty</h2>
 							<ul>
-								<li><a href="about.html">About Our Company</a></li>
-								<li><a href="services.html">Our Services</a></li>
-								<li><a href="testimonials.html">Testimonials</a></li>
-								<li><a href="contact.html">Work with Us</a></li>
+								<li><a href="{{ url('/') }}/about-us">>Về chúng tôi</a></li>
+								<li><a href="{{ url('/') }}/our-service">>Các dịch vụ</a></li>
+								<!-- <li><a href="{{ url('/') }}/about-us">Testimonials</a></li> -->
+								<!-- <li><a href="contact.html">Work with Us</a></li> -->
 							</ul>
 						</div>
 						<!--/ End Single Widget -->
@@ -216,18 +170,19 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-widget">
-							<h2>Reservation</h2>
+							<h2>Điều khoản</h2>
 							<ul>
-								<li><a href="#">Terms and Conditions</a></li>
-								<li><a href="#">Copyright</a></li>
-								<li><a href="#">Refund Policy</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Disclaimer</a></li>
+								<li><a href="{{ url('/') }}/terms-and-conditions">>Các điều khoản và điều kiện</a></li>
+								<li><a href="{{ url('/') }}/copyright">>Bản quyền</a></li>
+								<!-- <li><a href="#">Refund Policy</a></li> -->
+								<li><a href="{{ url('/') }}/privacy-policy">>Chính sách bảo mật</a></li>
+								<li><a href="{{ url('/') }}/disclaimer">>Điều kiện đổi trả</a></li>
 							</ul>
 						</div>
 						<!--/ End Single Widget -->
 					</div>
 					<div class="col-lg-3 col-md-6 col-12">
+					@if(false)
 						<!-- Single Widget -->
 						<div class="single-widget gallery">
 							<h2>Gallery Image</h2>
@@ -241,12 +196,13 @@
 							</ul>
 						</div>
 						<!--/ End Single Widget -->
+					@endif
 					</div>
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-widget about">
 							<img src="{{ url('/') }}/public/images/logo2.png" alt="#">
-							<p>At Revirta, we hire US-based, detail-oriented people who strive to provide our clients with the best assistance.</p>
+							<!-- <p>At Revirta, we hire US-based, detail-oriented people who strive to provide our clients with the best assistance.</p> -->
 						</div>
 						<!--/ End Single Widget -->
 					</div>
@@ -264,7 +220,7 @@
 								<div class="col-lg-8 col-md-8 col-12">
 									<!-- Copyright -->
 									<div class="copyright"> 
-										<p>Copyright &#9400; 2018 by <a href="#">{{ $siteConfig['copyright'] }}.</a> All Right Reserved</p>
+										<p>Website thuộc sở hữu của công ty <a href="#">{{ $siteConfig['copyright'] }}</a></p>
 									</div>
 									<!--/ End Copyright -->
 								</div>

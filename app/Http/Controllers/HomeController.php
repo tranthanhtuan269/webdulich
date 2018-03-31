@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use App\Helper\Helper;
 use App\SiteConfig;
 use Session;
 use Response;
@@ -55,6 +56,26 @@ class HomeController extends Controller
                         
         return Redirect::back()->withErrors(['Record has been successfully updated!']);
         // return Redirect::back()->with('message','Record has been successfully updated!');
+    }
+
+    public function storePage(Request $request)
+    {
+        $input = $request->all();
+
+        $site_config = SiteConfig::where('name', 'page_about_us')
+                        ->update(['text' => Helper::removeSpace($input['page_about_us'])]);
+        $site_config = SiteConfig::where('name', 'page_our_service')
+                        ->update(['text' => Helper::removeSpace($input['page_our_service'])]);
+        $site_config = SiteConfig::where('name', 'page_terms_and_conditions')
+                        ->update(['text' => Helper::removeSpace($input['page_terms_and_conditions'])]);
+        $site_config = SiteConfig::where('name', 'page_copyright')
+                        ->update(['text' => Helper::removeSpace($input['page_copyright'])]);
+        $site_config = SiteConfig::where('name', 'page_privacy_policy')
+                        ->update(['text' => Helper::removeSpace($input['page_privacy_policy'])]);
+        $site_config = SiteConfig::where('name', 'page_disclaimer')
+                        ->update(['text' => Helper::removeSpace($input['page_disclaimer'])]);
+                        
+        return Redirect::back()->withErrors(['Record has been successfully updated!']);
     }
 
     public function ajaxpro(Request $request){

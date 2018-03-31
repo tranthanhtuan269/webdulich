@@ -15,6 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about-us', function () {
+    return view('site.aboutus');
+});
+Route::get('/our-service', function () {
+    return view('site.ourservice');
+});
+Route::get('/terms-and-conditions', function () {
+    return view('site.terms');
+});
+Route::get('/copyright', function () {
+    return view('site.copyright');
+});
+Route::get('/privacy-policy', function () {
+    return view('site.privacy');
+});
+Route::get('/disclaimer', function () {
+    return view('site.disclaimer');
+});
+
 Route::get('getImageForm', 'HomeController@getImageForm')->name('home.getImageForm');
 Route::post('postImageForm', 'HomeController@postImageForm')->name('home.postImageForm');
 Route::get('getJCrop', 'HomeController@getJCrop')->name('home.getJCrop');
@@ -25,10 +44,12 @@ Route::post('/postImage', 'HomeController@postImage');
 Route::post('/ajaxpro', 'HomeController@ajaxpro');
 
 Route::get('/home', 'HomeController@index')->name('home.home');
+
 Route::post('home/active', 'HomeController@active')->name('home.active');
 Route::post('home/inactive', 'HomeController@inactive')->name('home.inactive');
 Route::get('/config-site', 'HomeController@config')->name('home.config');
 Route::post('/store', 'HomeController@store')->name('home.store');
+Route::post('/store-pages', 'HomeController@storePage')->name('home.storePage');
 
 Route::get('/contacts', 'ContactController@list')->name('contact.list');
 Route::get('/contacts/create', 'ContactController@create')->name('contact.create');
@@ -63,6 +84,8 @@ Route::post('activities/inactive', 'ActivityController@inactive')->name('activit
 Route::resource('blogs', 'BlogController');
 Route::post('blogs/active', 'BlogController@active')->name('blogs.active');
 Route::post('blogs/inactive', 'BlogController@inactive')->name('blogs.inactive');
+
+
 
 // add latest
 Route::get('blogs/view/{id}', 'SiteController@showBlog')->name('blogs.showBlog');

@@ -3,7 +3,9 @@
 @section('content')
 <?php
 	$siteConfig = \DB::table('site_configs')->pluck('text', 'name');
+	// dd($siteConfig);
 ?>
+<script src="{{ url('/') }}/public/templateEditor/ckeditor/ckeditor.js"></script>
 <style type="text/css">
 	#v-pills-tab,
 	#v-pills-tabContent{
@@ -15,7 +17,6 @@
 		<div class="nav flex-column nav-pills col-md-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		  	<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Site Config</a>
 		  	<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Home Config</a>
-		  	<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
 		  	<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
 		</div>
 		<div class="tab-content col-md-10" id="v-pills-tabContent">
@@ -234,9 +235,127 @@
 			        </div>
 			    </div>
 		  	</div>
-		  	<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-		  	<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+		  	<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+		  		<div class="row">
+			        <div class="col-sm-12">
+			        	{!! Form::open(['route' => 'home.storePage', 'class' => 'form-horizontal']) !!}
+                		{{ csrf_field() }}
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Về chúng tôi</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('page_about_us', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Các dịch vụ</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('page_our_service', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Các điều khoản và điều kiện</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('page_terms_and_conditions', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Bản quyền</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('page_copyright', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Chính sách bảo mật</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('page_privacy_policy', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Điều kiện đổi trả</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('page_disclaimer', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					    	<div class="col-sm-offset-4 col-sm-8">
+					      		<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+					      		<a href="{{ url('blogs/') }}" class="btn btn-primary">
+					            	<i class="fa fa-list" aria-hidden="true"></i> List
+					            </a>
+					    	</div>
+					  	</div>
+					  	{!! Form::close() !!}
+			        </div>
+			    </div>
+		  	</div>
 		</div>
 	</div>
 </div>
+<script>
+	CKEDITOR.replace( 'page_about_us', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    var html_page_about_us = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_about_us'])); ?>';
+    CKEDITOR.instances['page_about_us'].setData(html_page_about_us);
+
+	CKEDITOR.replace( 'page_our_service', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    var html_page_our_service = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_our_service'])); ?>';
+    CKEDITOR.instances['page_our_service'].setData(html_page_our_service);
+
+	CKEDITOR.replace( 'page_terms_and_conditions', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    var html_page_terms_and_conditions = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_terms_and_conditions'])); ?>';
+    CKEDITOR.instances['page_terms_and_conditions'].setData(html_page_terms_and_conditions);
+
+	CKEDITOR.replace( 'page_copyright', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    var html_page_copyright = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_copyright'])); ?>';
+    CKEDITOR.instances['page_copyright'].setData(html_page_copyright);
+
+	CKEDITOR.replace( 'page_privacy_policy', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    var html_page_privacy_policy = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_privacy_policy'])); ?>';
+    CKEDITOR.instances['page_privacy_policy'].setData(html_page_privacy_policy);
+
+	CKEDITOR.replace( 'page_disclaimer', {
+        'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
+        'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
+        'filebrowserFlashBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash',
+        'filebrowserUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files',
+        'filebrowserImageUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images',
+        'filebrowserFlashUploadUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash'
+    } );
+    var html_page_disclaimer = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_disclaimer'])); ?>';
+    CKEDITOR.instances['page_disclaimer'].setData(html_page_disclaimer);
+</script>
 @endsection

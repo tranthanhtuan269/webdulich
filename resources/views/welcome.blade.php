@@ -6,6 +6,18 @@
 <?php 
     $url_path = 'http://dulich.gmon.vn';
     ?>
+<section id="hero-area" class="hero-area overlay" data-stellar-background-ratio="0.7">
+    <div class="hero-main">
+       <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="hero-inner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Blog Area -->
 <section id="blog-area" class="blog-area section">
     <div class="container">
@@ -33,7 +45,7 @@
                                     <div class="blog-content">
                                         <span>{{ date('M d Y', strtotime($blog->updated_at)) }}</span>
                                         <h4><a href="{{ $url_path }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
-                                        <a href="{{ $url_path }}/blogs/view/{{ $blog->id }}" class="btn">Read More</a>
+                                        <a href="{{ $url_path }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
                                     </div>
                                 </div>
                                 <!--/ End Single Blog -->

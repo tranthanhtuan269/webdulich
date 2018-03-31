@@ -15,12 +15,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<ul class="list">
+					<!-- <ul class="list">
 						<li><a href="index.html">Home</a></li>
 						<li><a href="#">Blogs</a></li>
 						<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 					</ul>
-					<h2>Blog Details Page</h2>
+					<h2>Blog Details Page</h2> -->
 				</div>
 			</div>
 		</div>
@@ -92,7 +92,7 @@
 						@endif
 						<!-- Categories -->
 						<div class="single-widget categories">
-							<h2>Categories</h2>
+							<h2>Chủ đề</h2>
 							<ul class="categories-inner">
 								@foreach($categories as $category)
 								<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
@@ -168,4 +168,42 @@
 		</div>
 	</section>
 	<!--/ End Blog Grid -->
+
+	<!-- Clients -->
+	<div id="clients" class="clients section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="clients-slider">
+						<!-- Single Clients -->
+						<div class="single-clients">
+							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
+						</div>
+						<!--/ End Single Clients -->
+						<!-- Single Clients -->
+						<div class="single-clients active">
+							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
+						</div>
+						<!--/ End Single Clients -->
+						<!-- Single Clients -->
+						<div class="single-clients">
+							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
+						</div>
+						<!--/ End Single Clients -->
+						<!-- Single Clients -->
+						<div class="single-clients">
+							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
+						</div>
+						<!--/ End Single Clients -->
+						<!-- Single Clients -->
+						<div class="single-clients">
+							<a href="#" target="_blank"><img src="http://via.placeholder.com/220x60" alt="#"></a>
+						</div>
+						<!--/ End Single Clients -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ End Clients -->
 @endsection

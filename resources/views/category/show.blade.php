@@ -6,12 +6,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<ul class="list">
+				<!-- <ul class="list">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="#">Blogs</a></li>
 					<li><a href="blog-single-sidebar.html">Blog Grid Sidebar</a></li>
 				</ul>
-				<h2>Blog Grid Style</h2>
+				<h2>Blog Grid Style</h2> -->
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 								<?php 
 									echo $blog->sub_content;
 								?>
-								<a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Read More</a>
+								<a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Đọc tiếp >></a>
 							</div>
 						</div>
 						<!--/ End Single Blog -->
@@ -78,7 +78,7 @@
 					@endif
 					<!-- Categories -->
 					<div class="single-widget categories">
-						<h2>Categories</h2>
+						<h2>Chủ đề</h2>
 						<ul class="categories-inner">
 							@foreach($categories as $category)
 							<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>

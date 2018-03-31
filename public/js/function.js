@@ -16,6 +16,8 @@ $(document).ready(function(){
 		page = 'activities';
 	}else if(fullUrl.indexOf("home") > -1){
 		page = 'home';
+	}else if(fullUrl.indexOf("blogs") > -1){
+		page = 'blogs';
 	}
 
 	$.ajaxSetup({

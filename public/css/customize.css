@@ -21,3 +21,11 @@
 	border-color: #FF7550;
 	text-transform: uppercase;
 }
+
+.logo img{
+	height: 120px;
+}
+
+.footer .single-widget.about img{
+	border-radius: 2px;
+}

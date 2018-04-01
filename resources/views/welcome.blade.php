@@ -16,16 +16,17 @@
         </div>
     </div>
 </section>
+<?php
+    $categories = \App\Category::where('active', 1)->take(5)->get();
+    $partners   = \App\Partner::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
+    ?>
+@foreach($categories as $category)
+@if($category->id % 2 == 1)
 <!-- Blog Area -->
 <section id="blog-area" class="blog-area section">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <?php
-                    $categories = \App\Category::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
-                    $partners   = \App\Partner::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
-                    ?>
-                @foreach($categories as $category)
                     <?php
                         $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(3)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
                         ?>
@@ -54,11 +55,53 @@
                         </li>
                     </ul>
                     @endif
-                @endforeach
+                
             </div>
         </div>
     </div>
 </section>
+@else
+<section id="p-destination" class="p-destination section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Destination -->
+                <ul class="list-group list-group-category">
+                    <li class="list-group-item active text-left">{{  $category->name }}<a href="{{ $url_string }}/categories/view/{{  $category->id }}" class="float-right">xem thêm >> </a></li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <?php
+                                $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                                ?>
+                            @if(count($blogs) > 0)
+                            @foreach($blogs as $blog)
+                            <div class="col-lg-3 col-12">
+                                <!-- Single Destination -->
+                                <div class="single-destination overlay">
+                                    <a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
+                                        <img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                        <div class="hover">
+                                            <!-- <p class="price">FROM <span>$400</span></p> -->
+                                            <h4 class="name">{{ $blog->title }}</h4>
+                                            <!-- <p class="location">unexplored mountains</p> -->
+                                        </div>
+                                    </a>
+                                </div>
+                                <!--/ End Destination -->
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
+                    </li>
+                </ul>
+                <!--/ End Destination -->
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+@endforeach
+
 <section id="top-destination" class="top-destination section">
     <!-- Clients -->
     <div id="clients" class="clients section">

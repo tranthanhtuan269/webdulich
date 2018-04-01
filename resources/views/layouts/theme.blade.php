@@ -10,7 +10,7 @@
 	<!-- Title Tag  -->
 	<title>@yield('title')</title>
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="icon" type="image/png" href="{{ url('/') }}/public/images/home/gmon-03.jpg">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	
@@ -66,7 +66,7 @@
 					<div class="col-lg-3 col-md-3 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="{{ url('/') }}/public/images/logo.png" alt="logo"></a>
+							<a href="index.html"><img src="{{ url('/') }}/public/images/home/gmon-03.jpg" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<div class="mobile-nav"></div>
@@ -201,7 +201,7 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-widget about">
-							<img src="{{ url('/') }}/public/images/logo2.png" alt="#">
+							<img src="{{ url('/') }}/public/images/home/gmon-03.jpg" alt="#" width="140">
 							<!-- <p>At Revirta, we hire US-based, detail-oriented people who strive to provide our clients with the best assistance.</p> -->
 						</div>
 						<!--/ End Single Widget -->

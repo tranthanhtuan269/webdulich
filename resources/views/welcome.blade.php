@@ -3,6 +3,7 @@
 @section('title', 'dulich.gmon.vn')
 
 @section('content')
+<?php $url_string = 'http://dulich.gmon.vn'; ?>
 <section id="hero-area" class="hero-area overlay" data-stellar-background-ratio="0.7">
     <div class="hero-main">
        <div class="container">
@@ -30,25 +31,26 @@
                         ?>
                     @if(count($blogs) > 0)
                     <ul class="list-group list-group-category">
-                        <li class="list-group-item active">{{  $category->name }}<a href="{{ url('/') }}/categories/view/{{  $category->id }}" class="float-right">xem thêm >> </a></li>
+                        <li class="list-group-item active">{{  $category->name }}<a href="{{ $url_string }}/categories/view/{{  $category->id }}" class="float-right">xem thêm >> </a></li>
                         <li class="list-group-item">
-                            
+                            <div class="row">
                             @foreach($blogs as $blog)
-                            <div class="col-lg-3 col-md-3 col-12">
+                            <div class="col-lg-3 col-md-3 col-3">
                                 <!-- Single Blog -->
                                 <div class="single-blog">
                                     <div class="blog-head">
-                                        <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                        <img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                     </div>
                                     <div class="blog-content">
                                         <span>{{ date('d-m-Y', strtotime($blog->updated_at)) }}</span>
-                                        <h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
-                                        <a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
+                                        <h4><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+                                        <a href="{{ $url_string }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
                                     </div>
                                 </div>
                                 <!--/ End Single Blog -->
                             </div>
                             @endforeach
+                            </div>
                         </li>
                     </ul>
                     @endif
@@ -67,7 +69,7 @@
                         @foreach($partners as $partner)
                         <!-- Single Clients -->
                         <div class="single-clients">
-                            <a href="{{ $partner->url }}" target="_blank"><img src="{{ url('/') }}/public/images/{{ $partner->image }}" alt="{{ $partner->name }}"></a>
+                            <a href="{{ $partner->url }}" target="_blank"><img src="{{ $url_string }}/public/images/{{ $partner->image }}" alt="{{ $partner->name }}"></a>
                         </div>
                         <!--/ End Single Clients -->
                         @endforeach

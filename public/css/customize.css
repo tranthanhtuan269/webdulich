@@ -29,3 +29,15 @@
 .footer .single-widget.about img{
 	border-radius: 2px;
 }
+
+.single-blog .blog-content h4{
+	min-height: 75px;
+}
+
+.single-blog .blog-content h4 a{
+	min-height: 75px;
+}
+
+.blog-area.archive .blog-content h4{
+	min-height: 85px;
+}

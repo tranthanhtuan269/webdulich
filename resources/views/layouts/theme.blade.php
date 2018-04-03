@@ -126,6 +126,7 @@
 											@endforeach
 										</ul>
 									</li>
+									@if(false)
 									<li><a href="#">Dịch vụ<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($services as $service)
@@ -133,6 +134,7 @@
 											@endforeach
 										</ul>
 									</li>
+									@endif
 									<li><a href="{{ url('/') }}/contacts/create">Liên hệ</a></li>
 								</ul>
 							</nav>

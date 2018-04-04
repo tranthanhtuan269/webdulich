@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12">
                     <?php
-                        $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(3)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                        $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
                         ?>
                     @if(count($blogs) > 0)
                     <ul class="list-group list-group-category">

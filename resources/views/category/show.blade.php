@@ -1,6 +1,7 @@
 @extends('layouts.theme')
 
 @section('content')
+<?php $url_string = 'http://dulich.gmon.vn'; ?>
 <!-- Breadcrumb -->
 <div class="breadcrumbs overlay" data-stellar-background-ratio="0.7">
 	<div class="container">
@@ -29,15 +30,17 @@
 						<!-- Single Blog -->
 						<div class="single-blog">
 							<div class="blog-head">
-								<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+								<img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 							</div>
 							<div class="blog-content">
-								<h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+								<h4 class="crop-title"><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
 								<div class="meta">{{ date('d-m-Y', strtotime($blog->updated_at)) }}</div>
+								<div class="crop-content">
 								<?php 
 									echo $blog->sub_content;
 								?>
-								<a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Đọc tiếp >></a>
+								</div>
+								<a href="{{ $url_string }}/blogs/view/{{ $blog->id }}" class="btn">Đọc tiếp >></a>
 							</div>
 						</div>
 						<!--/ End Single Blog -->
@@ -81,7 +84,7 @@
 						<h2>Chủ đề</h2>
 						<ul class="categories-inner">
 							@foreach($categories as $category)
-							<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+							<li><a href="{{ $url_string }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
 							@endforeach
 						</ul>
 					</div>

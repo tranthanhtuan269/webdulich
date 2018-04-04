@@ -38,6 +38,16 @@
 	min-height: 75px;
 }
 
-.blog-area.archive .blog-content h4{
-	min-height: 85px;
+.crop-title {
+	width:100%;
+	overflow:hidden;
+	height:85px;
+	text-overflow: ellipsis;
+}
+
+.crop-content {
+	width:100%;
+	overflow:hidden;
+	height:108px;
+	text-overflow: ellipsis;
 }

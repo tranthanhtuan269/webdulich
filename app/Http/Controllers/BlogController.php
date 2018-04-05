@@ -20,7 +20,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = DB::table('blogs')->paginate(15);
+        $blogs = DB::table('blogs')->orderby('id', 'desc')->paginate(15);
         return view('blog.index', ['blogs' => $blogs]);
     }
 

@@ -17,6 +17,7 @@
     </div>
 </section>
 <?php
+    const MAX_SIZE = 44;
     $categories = \App\Category::where('active', 1)->take(5)->get();
     $partners   = \App\Partner::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
     ?>
@@ -44,7 +45,15 @@
                                     </div>
                                     <div class="blog-content">
                                         <span>{{ date('d-m-Y', strtotime($blog->updated_at)) }}</span>
-                                        <h4><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+                                        <h4><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
+                                        <?php 
+                                        if(strlen($blog->title) > MAX_SIZE){
+                                            echo mb_strimwidth($blog->title, 0, MAX_SIZE, '...');
+                                        }else{
+                                            echo $blog->title;
+                                        }
+                                        ?>
+                                        </a></h4>
                                         <a href="{{ $url_string }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
                                     </div>
                                 </div>

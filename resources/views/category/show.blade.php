@@ -1,7 +1,10 @@
 @extends('layouts.theme')
 
 @section('content')
-<?php $url_string = 'http://dulich.gmon.vn'; ?>
+<?php 
+	const MAX_SIZE = 44;
+	$url_string = 'http://dulich.gmon.vn'; 
+	?>
 <!-- Breadcrumb -->
 <div class="breadcrumbs overlay" data-stellar-background-ratio="0.7">
 	<div class="container">
@@ -33,7 +36,15 @@
 								<img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 							</div>
 							<div class="blog-content">
-								<h4 class="crop-title"><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+								<h4 class="crop-title"><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
+								<?php
+								if(strlen($blog->title) > MAX_SIZE){
+                                    echo mb_strimwidth($blog->title, 0, MAX_SIZE, '...');
+                                }else{
+                                    echo $blog->title;
+                                }
+                                ?>
+								</a></h4>
 								<div class="meta">{{ date('d-m-Y', strtotime($blog->updated_at)) }}</div>
 								<div class="crop-content">
 								<?php 

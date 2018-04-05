@@ -40,7 +40,7 @@
 									<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 								</div>
 								<div class="blog-content">
-									<h4><a href="{{ url('/') }}/blogs/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+									<h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
 									<div class="meta">{{ date('d-m-Y', strtotime($blog->updated_at)) }}</div>
 									<?php 
 										echo $blog->content;

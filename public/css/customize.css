@@ -62,3 +62,15 @@
 	padding-top: 30px;
 	margin: 0 0 30px 0;
 }
+
+.p-destination .single-destination{
+	margin-top: 12px;
+}
+
+.small-group .col-lg-6{
+	padding: 0 6px;
+}
+
+.big-content{
+	padding: 0 2px;
+}

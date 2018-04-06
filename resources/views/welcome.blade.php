@@ -79,26 +79,79 @@
                     <li class="list-group-item active text-left">{{  $category->name }}<a href="{{ $url_string }}/categories/view/{{  $category->id }}" class="float-right">xem thêm >> </a></li>
                     <li class="list-group-item">
                         <div class="row">
-                            <?php
-                                $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
-                                ?>
-                            @if(count($blogs) > 0)
-                            @foreach($blogs as $blog)
-                            <div class="col-lg-3 col-12">
-                                <!-- Single Destination -->
-                                <div class="single-destination overlay">
-                                    <a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
-                                        <img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
-                                        <div class="hover">
-                                            <!-- <p class="price">FROM <span>$400</span></p> -->
-                                            <h4 class="name">{{ $blog->title }}</h4>
-                                            <!-- <p class="location">unexplored mountains</p> -->
-                                        </div>
-                                    </a>
+                            @if($category->id == 2)
+                                <?php
+                                    $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(5)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                                    ?>
+                                @if(count($blogs) > 0)
+                                <div class="col-lg-6 col-12 big-content">
+                                    <!-- Single Destination -->
+                                    <div class="single-destination overlay">
+                                        <a href="{{ $url_string }}/blogs/view/{{ $blogs[0]->id }}">
+                                            <img src="{{ $url_string }}/public/images/{{ $blogs[0]->image }}" alt="{{ $blogs[0]->title }}">
+                                            <div class="hover">
+                                                <!-- <p class="price">FROM <span>$400</span></p> -->
+                                                <h4 class="name">{{ $blogs[0]->title }}</h4>
+                                                <!-- <p class="location">unexplored mountains</p> -->
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!--/ End Destination -->
                                 </div>
-                                <!--/ End Destination -->
-                            </div>
-                            @endforeach
+                                <div class="col-lg-6 col-12">
+                                <?php $i = 0; ?>
+                                @foreach($blogs as $blog)
+                                <?php 
+                                    $i++; 
+                                    if($i == 1) continue;
+                                    if($i % 2 == 0){
+                                        echo '<div class="row small-group">';
+                                    }
+                                ?>
+                                <div class="col-lg-6 col-12">
+                                    <!-- Single Destination -->
+                                    <div class="single-destination overlay">
+                                        <a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
+                                            <img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                            <div class="hover">
+                                                <!-- <p class="price">FROM <span>$400</span></p> -->
+                                                <h4 class="name">{{ $blog->title }}</h4>
+                                                <!-- <p class="location">unexplored mountains</p> -->
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!--/ End Destination -->
+                                </div>
+                                <?php
+                                    if($i % 2 == 1){
+                                        echo '</div>';
+                                    }
+                                ?>
+                                @endforeach
+                                </div>
+                                @endif
+                            @else
+                                <?php
+                                    $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                                    ?>
+                                @if(count($blogs) > 0)
+                                @foreach($blogs as $blog)
+                                <div class="col-lg-3 col-12">
+                                    <!-- Single Destination -->
+                                    <div class="single-destination overlay">
+                                        <a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
+                                            <img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                            <div class="hover">
+                                                <!-- <p class="price">FROM <span>$400</span></p> -->
+                                                <h4 class="name">{{ $blog->title }}</h4>
+                                                <!-- <p class="location">unexplored mountains</p> -->
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!--/ End Destination -->
+                                </div>
+                                @endforeach
+                                @endif
                             @endif
                         </div>
                     </li>

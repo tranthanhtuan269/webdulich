@@ -78,6 +78,18 @@ class HomeController extends Controller
         return Redirect::back()->withErrors(['Record has been successfully updated!']);
     }
 
+    public function storeSeo(Request $request)
+    {
+        $input = $request->all();
+
+        $site_config = SiteConfig::where('name', 'keywords')
+                        ->update(['text' => $input['keywords']]);
+        $site_config = SiteConfig::where('name', 'description')
+                        ->update(['text' => $input['description']]);
+                        
+        return Redirect::back()->withErrors(['Record has been successfully updated!']);
+    }
+
     public function ajaxpro(Request $request){
         if(isset($_POST["image"])){
             $data = $_POST["image"];

@@ -50,6 +50,7 @@ Route::post('home/inactive', 'HomeController@inactive')->name('home.inactive');
 Route::get('/config-site', 'HomeController@config')->name('home.config');
 Route::post('/store', 'HomeController@store')->name('home.store');
 Route::post('/store-pages', 'HomeController@storePage')->name('home.storePage');
+Route::post('/store-seo', 'HomeController@storeSeo')->name('home.storeSeo');
 
 Route::get('/contacts', 'ContactController@list')->name('contact.list');
 Route::get('/contacts/create', 'ContactController@create')->name('contact.create');

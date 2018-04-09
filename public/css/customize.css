@@ -16,6 +16,12 @@
 	margin: 20px 0;
 }
 
+.list-group-category h2{
+	font-size: 22px;
+	width: 80%;
+	float: left;
+}
+
 .list-group-category > .active{
 	background-color: #FF7550;
 	border-color: #FF7550;

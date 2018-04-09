@@ -18,6 +18,7 @@
 		  	<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Site Config</a>
 		  	<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Home Config</a>
 		  	<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+		  	<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-seo" role="tab" aria-controls="v-pills-seo" aria-selected="false">Seo</a>
 		</div>
 		<div class="tab-content col-md-10" id="v-pills-tabContent">
 		  	<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -274,6 +275,35 @@
 					    	<label for="inputSiteName" class="col-sm-3 control-label">Điều kiện đổi trả</label>
 					    	<div class="col-sm-9">
 					    		{!! Form::textarea('page_disclaimer', null, ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+					  	<div class="form-group row">
+					    	<div class="col-sm-offset-4 col-sm-8">
+					      		<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+					      		<a href="{{ url('blogs/') }}" class="btn btn-primary">
+					            	<i class="fa fa-list" aria-hidden="true"></i> List
+					            </a>
+					    	</div>
+					  	</div>
+					  	{!! Form::close() !!}
+			        </div>
+			    </div>
+		  	</div>
+		  	<div class="tab-pane fade" id="v-pills-seo" role="tabpanel" aria-labelledby="v-pills-seo-tab">
+		  		<div class="row">
+			        <div class="col-sm-12">
+			        	{!! Form::open(['route' => 'home.storeSeo', 'class' => 'form-horizontal']) !!}
+                		{{ csrf_field() }}
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Keywords</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('keywords', $siteConfig['keywords'], ['class' => 'form-control']) !!}
+					    	</div>
+					  	</div>
+			        	<div class="form-group row">
+					    	<label for="inputSiteName" class="col-sm-3 control-label">Description</label>
+					    	<div class="col-sm-9">
+					    		{!! Form::textarea('description', $siteConfig['description'], ['class' => 'form-control']) !!}
 					    	</div>
 					  	</div>
 					  	<div class="form-group row">

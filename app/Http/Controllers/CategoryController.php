@@ -61,8 +61,10 @@ class CategoryController extends Controller
                 ->withErrors($validator);
         }
 
-        $category = new Category;
-        $category->name = $request->name;
+        $category                   = new Category;
+        $category->name             = $request->name;
+        $category->keywords         = $request->keywords;
+        $category->description      = $request->description;
         $category->save();
 
         return redirect('/categories');
@@ -103,9 +105,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $name = $input['name'];
-        Category::where('id', $id)->update(['name' => $name]);
+        $input          = $request->all();
+        $name           = $input['name'];
+        $keywords       = $input['keywords'];
+        $description    = $input['description'];
+
+        Category::where('id', $id)->update([
+                            'name'          => $name, 
+                            'keywords'      => $keywords, 
+                            'description'   => $description
+                            ]);
 
         return redirect('/categories');
     }

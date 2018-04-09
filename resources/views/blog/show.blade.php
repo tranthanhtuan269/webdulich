@@ -1,11 +1,12 @@
 @extends('layouts.theme')
 
-@section('title', 'dulich.gmon.vn')
+@section('title', $blog->title)
+@section('keywords', $blog->keywords)
+@section('description', $blog->description)
 
 @section('content')
 <?php 
 	const MAX_SIZE = 44;
-	$url_string = 'http://dulich.gmon.vn'; 
 	$cities = \DB::table('cities')->select('id', 'name')->where('active', 1)->get();
 	$activities = \DB::table('activities')->select('id', 'name')->where('active', 1)->get();
 	$durations = \DB::table('durations')->select('id', 'name')->where('active', 1)->get();
@@ -39,10 +40,10 @@
 							<!-- Single Blog -->
 							<div class="single-blog">
 								<div class="blog-head">
-									<img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+									<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 								</div>
 								<div class="blog-content">
-									<h4><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h4>
+									<h1><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h1>
 									<div class="meta">{{ date('d-m-Y', strtotime($blog->updated_at)) }}</div>
 									<?php 
 										echo $blog->content;
@@ -99,7 +100,7 @@
 							<h2>Chủ đề</h2>
 							<ul class="categories-inner">
 								@foreach($categories as $category)
-								<li><a href="{{ $url_string }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+								<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
 								@endforeach
 							</ul>
 						</div>
@@ -184,10 +185,10 @@
 								<!-- Single Blog -->
 								<div class="single-blog">
 									<div class="blog-head">
-										<img src="{{ $url_string }}/public/images/{{ $b->image }}" alt="{{ $b->title }}">
+										<img src="{{ url('/') }}/public/images/{{ $b->image }}" alt="{{ $b->title }}">
 									</div>
 									<div class="blog-content">
-										<div><a href="{{ $url_string }}/blogs/view/{{ $b->id }}">
+										<div><a href="{{ url('/') }}/blogs/view/{{ $b->id }}">
 										<?php
 										if(strlen($b->title) > MAX_SIZE){
 		                                    echo mb_strimwidth($b->title, 0, MAX_SIZE, '...');

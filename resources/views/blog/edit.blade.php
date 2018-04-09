@@ -33,13 +33,6 @@
 						    </div>
 						</div>
 						<div class="form-group row">
-						    {!! Form::label('keyword', 'Keyword', ['class' => 'col-md-3 control-label']) !!}
-						    <div class="col-md-9">
-						        {!! Form::text('keyword', $blog->keyword, ['class' => 'form-control']) !!}
-						        {!! $errors->first('keyword', '<p class="help-block">:message</p>') !!}
-						    </div>
-						</div>
-						<div class="form-group row">
 						    {!! Form::label('category', 'Category', ['class' => 'col-md-3 control-label']) !!}
 						    <div class="col-md-9">
 						        {!! Form::select('category_id', $categories, $blog->category_id, array('class' => 'form-control', 'id' => 'category_id')) !!}
@@ -60,6 +53,18 @@
 						        {!! $errors->first('content', '<p class="help-block">:message</p>') !!}
 						    </div>
 						</div>
+			            <div class="form-group row">
+					    	<label for="inputBlogKeywords" class="col-sm-3 control-label">Blog Keywords</label>
+					    	<div class="col-sm-9">
+					      		<textarea class="form-control" rows="5" id="inputBlogKeywords" name="keywords">{{ $blog->keywords }}</textarea>
+					    	</div>
+					  	</div>
+			            <div class="form-group row">
+					    	<label for="inputBlogDescription" class="col-sm-3 control-label">Blog Description</label>
+					    	<div class="col-sm-9">
+					      		<textarea class="form-control" rows="5" id="inputBlogDescription" name="description">{{ $blog->description }}</textarea>
+					    	</div>
+					  	</div>
 					  	<div class="form-group row">
 					    	<div class="col-sm-offset-4 col-sm-8">
 					      		<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>

@@ -19,6 +19,18 @@
 		      		<input type="text" class="form-control" id="inputCategoryName" name="name" placeholder="Category Name">
 		    	</div>
 		  	</div>
+            <div class="form-group row">
+		    	<label for="inputCategoryName" class="col-sm-2 control-label">Category Keywords</label>
+		    	<div class="col-sm-10">
+		      		<textarea class="form-control" rows="5" id="inputCategoryKeywords" name="keywords"></textarea>
+		    	</div>
+		  	</div>
+            <div class="form-group row">
+		    	<label for="inputCategoryName" class="col-sm-2 control-label">Category Description</label>
+		    	<div class="col-sm-10">
+		      		<textarea class="form-control" rows="5" id="inputCategoryDescription" name="description"></textarea>
+		    	</div>
+		  	</div>
 		  	<div class="form-group row">
 		    	<div class="col-sm-offset-2 col-sm-10">
 		      		<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>

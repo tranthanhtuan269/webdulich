@@ -22,8 +22,9 @@ class SiteController extends Controller
     public function showCategory($id)
     {
         $categories = Category::all();
+        $category = Category::find($id);
         $blogs = Blog::where('category_id', $id)->paginate(6);
-        return view('category.show', ['blogs' => $blogs, 'categories' => $categories]);
+        return view('category.show', ['blogs' => $blogs, 'categories' => $categories, 'category' => $category]);
     }
 
     public function showBlog($id)

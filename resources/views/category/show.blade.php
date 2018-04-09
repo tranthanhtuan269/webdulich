@@ -1,9 +1,12 @@
 @extends('layouts.theme')
 
+@section('title', $category->name)
+@section('keywords', $category->keywords)
+@section('description', $category->description)
+
 @section('content')
 <?php 
 	const MAX_SIZE = 44;
-	$url_string = 'http://dulich.gmon.vn'; 
 	?>
 <!-- Breadcrumb -->
 <div class="breadcrumbs overlay" data-stellar-background-ratio="0.7">
@@ -33,10 +36,10 @@
 						<!-- Single Blog -->
 						<div class="single-blog">
 							<div class="blog-head">
-								<img src="{{ $url_string }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+								<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 							</div>
 							<div class="blog-content">
-								<h4 class="crop-title"><a href="{{ $url_string }}/blogs/view/{{ $blog->id }}">
+								<h4 class="crop-title"><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">
 								<?php
 								if(strlen($blog->title) > MAX_SIZE){
                                     echo mb_strimwidth($blog->title, 0, MAX_SIZE, '...');
@@ -51,7 +54,7 @@
 									echo $blog->sub_content;
 								?>
 								</div>
-								<a href="{{ $url_string }}/blogs/view/{{ $blog->id }}" class="btn">Đọc tiếp >></a>
+								<a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Đọc tiếp >></a>
 							</div>
 						</div>
 						<!--/ End Single Blog -->
@@ -95,7 +98,7 @@
 						<h2>Chủ đề</h2>
 						<ul class="categories-inner">
 							@foreach($categories as $category)
-							<li><a href="{{ $url_string }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+							<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
 							@endforeach
 						</ul>
 					</div>

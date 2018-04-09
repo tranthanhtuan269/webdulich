@@ -9,8 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
 	<title>@yield('title')</title>
+	<meta name="keywords" content="@yield('keywords')" />
+	<meta name="description" content="@yield('description')"/>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="{{ url('/') }}/public/images/home/gmon-03.jpg">
+	<link rel="canonical" href="{{ url('/') }}"/>
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	

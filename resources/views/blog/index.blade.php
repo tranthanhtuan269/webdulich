@@ -41,7 +41,7 @@
 						                <i class="fa fa-power-off" aria-hidden="true"></i> Inactive
 						            </span>
 			    				@endif
-			    				<a href="{{ url('blogs/view/'.$blog->id) }}" class="btn btn-info">
+			    				<a href="{{ url('blogs/'.$blog->id.'/'.$blog->slug) }}" class="btn btn-info">
 					                <i class="fa fa-eye" aria-hidden="true"></i> View
 					            </a>
 

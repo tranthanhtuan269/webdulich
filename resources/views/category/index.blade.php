@@ -42,7 +42,7 @@
 						                <i class="fa fa-power-off" aria-hidden="true"></i> Inactive
 						            </span>
 			    				@endif
-			    				<a href="{{ url('categories/view/'.$category->id) }}" class="btn btn-info">
+			    				<a href="{{ url('categories/'.$category->id.'/'.$category->slug) }}" class="btn btn-info">
 					                <i class="fa fa-eye" aria-hidden="true"></i> View
 					            </a>
 

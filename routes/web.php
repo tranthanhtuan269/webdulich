@@ -34,6 +34,8 @@ Route::get('/disclaimer', function () {
     return view('site.disclaimer');
 });
 
+Route::get('testSlug', 'HomeController@test')->name('home.test');
+
 Route::get('getImageForm', 'HomeController@getImageForm')->name('home.getImageForm');
 Route::post('postImageForm', 'HomeController@postImageForm')->name('home.postImageForm');
 Route::get('getJCrop', 'HomeController@getJCrop')->name('home.getJCrop');
@@ -95,5 +97,7 @@ Route::post('partners/inactive', 'PartnerController@inactive')->name('partners.i
 // add latest
 Route::get('blogs/view/{id}', 'SiteController@showBlog')->name('blogs.showBlog');
 Route::get('categories/view/{id}', 'SiteController@showCategory')->name('categories.showCategory');
+Route::get('blogs/{id}/{slug}', 'SiteController@showBlogSlug')->name('blogs.showBlogSlug');
+Route::get('categories/{id}/{slug}', 'SiteController@showCategorySlug')->name('categories.showCategorySlug');
 
 Auth::routes();

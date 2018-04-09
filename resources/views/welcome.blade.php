@@ -38,7 +38,7 @@
                         ?>
                     @if(count($blogs) > 0)
                     <ul class="list-group list-group-category">
-                        <li class="list-group-item active"><h2>{{  $category->name }}</h2><a href="{{ url('/') }}/categories/view/{{  $category->id }}" class="float-right">xem thêm >> </a></li>
+                        <li class="list-group-item active"><h2>{{  $category->name }}</h2><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}" class="float-right">xem thêm >> </a></li>
                         <li class="list-group-item">
                             <div class="row">
                             @foreach($blogs as $blog)
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="blog-content">
                                         <span>{{ date('d-m-Y', strtotime($blog->updated_at)) }}</span>
-                                        <h4><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">
+                                        <h4><a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
                                         <?php 
                                         if(strlen($blog->title) > MAX_SIZE){
                                             echo mb_strimwidth($blog->title, 0, MAX_SIZE, '...');
@@ -59,7 +59,7 @@
                                         }
                                         ?>
                                         </a></h4>
-                                        <a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Chi tiết >></a>
+                                        <a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}" class="btn">Chi tiết >></a>
                                     </div>
                                 </div>
                                 <!--/ End Single Blog -->
@@ -81,7 +81,7 @@
             <div class="col-12">
                 <!-- Destination -->
                 <ul class="list-group list-group-category">
-                    <li class="list-group-item active text-left"><h2>{{  $category->name }}</h2><a href="{{ url('/') }}/categories/view/{{  $category->id }}" class="float-right">xem thêm >> </a></li>
+                    <li class="list-group-item active text-left"><h2>{{  $category->name }}</h2><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}" class="float-right">xem thêm >> </a></li>
                     <li class="list-group-item">
                         <div class="row">
                             @if($category->id == 2)
@@ -92,7 +92,7 @@
                                 <div class="col-lg-6 col-12 big-content">
                                     <!-- Single Destination -->
                                     <div class="single-destination overlay">
-                                        <a href="{{ url('/') }}/blogs/view/{{ $blogs[0]->id }}">
+                                        <a href="{{ url('/') }}/blogs/{{ $blogs[0]->id }}/{{ $blogs[0]->slug }}">
                                             <img src="{{ url('/') }}/public/images/{{ $blogs[0]->image }}" alt="{{ $blogs[0]->title }}">
                                             <div class="hover">
                                                 <!-- <p class="price">FROM <span>$400</span></p> -->
@@ -116,7 +116,7 @@
                                 <div class="col-lg-6 col-12">
                                     <!-- Single Destination -->
                                     <div class="single-destination overlay">
-                                        <a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">
+                                        <a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
                                             <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                             <div class="hover">
                                                 <!-- <p class="price">FROM <span>$400</span></p> -->
@@ -144,7 +144,7 @@
                                 <div class="col-lg-3 col-12">
                                     <!-- Single Destination -->
                                     <div class="single-destination overlay">
-                                        <a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">
+                                        <a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
                                             <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                             <div class="hover">
                                                 <!-- <p class="price">FROM <span>$400</span></p> -->

@@ -39,7 +39,7 @@
 								<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 							</div>
 							<div class="blog-content">
-								<h4 class="crop-title"><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">
+								<h4 class="crop-title"><a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
 								<?php
 								if(strlen($blog->title) > MAX_SIZE){
                                     echo mb_strimwidth($blog->title, 0, MAX_SIZE, '...');
@@ -54,7 +54,7 @@
 									echo $blog->sub_content;
 								?>
 								</div>
-								<a href="{{ url('/') }}/blogs/view/{{ $blog->id }}" class="btn">Đọc tiếp >></a>
+								<a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}" class="btn">Đọc tiếp >></a>
 							</div>
 						</div>
 						<!--/ End Single Blog -->
@@ -98,7 +98,7 @@
 						<h2>Chủ đề</h2>
 						<ul class="categories-inner">
 							@foreach($categories as $category)
-							<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+							<li><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}">{{ $category->name }}</a></li>
 							@endforeach
 						</ul>
 					</div>

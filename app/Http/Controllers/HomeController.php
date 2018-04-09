@@ -33,6 +33,22 @@ class HomeController extends Controller
         return view('admin/config');
     }
 
+    public function test()
+    {
+        $blogs = \App\Blog::select('id')->get();
+        foreach($blogs as $b){
+            $blog = \App\Blog::find($b->id);
+            $blog->slug = null;
+            $blog->save();
+        }
+        $categories = \App\Category::select('id')->get();
+        foreach($categories as $c){
+            $category = \App\Category::find($c->id);
+            $category->slug = null;
+            $category->save();
+        }
+    }
+
     public function store(Request $request)
     {
         $input = $request->all();

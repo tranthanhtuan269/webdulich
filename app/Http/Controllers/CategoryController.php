@@ -110,11 +110,11 @@ class CategoryController extends Controller
         $keywords       = $input['keywords'];
         $description    = $input['description'];
 
-        Category::where('id', $id)->update([
-                            'name'          => $name, 
-                            'keywords'      => $keywords, 
-                            'description'   => $description
-                            ]);
+        $category = Category::find($id);
+        $category->name         = $name;
+        $category->keywords     = $keywords;
+        $category->description  = $description;
+        $category->save();
 
         return redirect('/categories');
     }

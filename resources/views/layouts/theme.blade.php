@@ -44,7 +44,7 @@
 
 	<?php 
 		$siteConfig = \DB::table('site_configs')->pluck('text', 'name');
-		$categories = \DB::table('categories')->select('id', 'name')->where('active', 1)->get();
+		$categories = \DB::table('categories')->select('id', 'name', 'slug')->where('active', 1)->get();
 		$services = \DB::table('services')->select('id', 'name')->where('active', 1)->get();
 	?>
 	
@@ -125,7 +125,7 @@
 									<li><a href="#">Bài viết<i class="fa fa-angle-down"></i></a>
 										<ul class="dropdown">
 											@foreach($categories as $category)
-											<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+											<li><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}">{{ $category->name }}</a></li>
 											@endforeach
 										</ul>
 									</li>

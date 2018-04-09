@@ -43,7 +43,7 @@
 									<img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
 								</div>
 								<div class="blog-content">
-									<h1><a href="{{ url('/') }}/blogs/view/{{ $blog->id }}">{{ $blog->title }}</a></h1>
+									<h1><a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">{{ $blog->title }}</a></h1>
 									<div class="meta">{{ date('d-m-Y', strtotime($blog->updated_at)) }}</div>
 									<?php 
 										echo $blog->content;
@@ -100,7 +100,7 @@
 							<h2>Chủ đề</h2>
 							<ul class="categories-inner">
 								@foreach($categories as $category)
-								<li><a href="{{ url('/') }}/categories/view/{{ $category->id }}">{{ $category->name }}</a></li>
+								<li><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}">{{ $category->name }}</a></li>
 								@endforeach
 							</ul>
 						</div>
@@ -188,7 +188,7 @@
 										<img src="{{ url('/') }}/public/images/{{ $b->image }}" alt="{{ $b->title }}">
 									</div>
 									<div class="blog-content">
-										<div><a href="{{ url('/') }}/blogs/view/{{ $b->id }}">
+										<div><a href="{{ url('/') }}/blogs/{{ $b->id }}/{{ $b->slug }}">
 										<?php
 										if(strlen($b->title) > MAX_SIZE){
 		                                    echo mb_strimwidth($b->title, 0, MAX_SIZE, '...');

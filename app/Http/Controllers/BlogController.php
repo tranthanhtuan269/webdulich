@@ -128,17 +128,16 @@ class BlogController extends Controller
         $keywords       = $input['keywords'];
         $description    = $input['description'];
 
-        Blog::where('id', $id)
-            ->update([
-                'title'         => $title, 
-                'image'         => $image,
-                'sub_content'   => $sub_content,
-                'content'       => $content,
-                'category_id'   => $category_id,
-                'keywords'      => $keywords,
-                'description'   => $description,
-                'updated_at'    => date("Y-m-d H:i:s"),
-            ]);
+        $blog = Blog::find($id);
+        $blog->title        = $title;
+        $blog->image        = $image;
+        $blog->sub_content  = $sub_content;
+        $blog->content      = $content;
+        $blog->category_id  = $category_id;
+        $blog->keywords     = $keywords;
+        $blog->description  = $description;
+        $blog->updated_at   = date("Y-m-d H:i:s");
+        $blog->save();
 
         return redirect('/blogs');
     }

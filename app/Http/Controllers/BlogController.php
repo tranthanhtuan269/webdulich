@@ -63,7 +63,8 @@ class BlogController extends Controller
         $blog->sub_content  = $sub_content;
         $blog->content      = $content;
         $blog->category_id  = $request->category_id;
-        $blog->keyword      = $request->keyword;
+        $blog->keywords     = $request->keywords;
+        $blog->description  = $request->description;
         $blog->created_at   = date("Y-m-d H:i:s");
         $blog->updated_at   = date("Y-m-d H:i:s");
 
@@ -124,7 +125,8 @@ class BlogController extends Controller
         $sub_content    = Helper::removeSpace($input['sub_content']);
         $content        = Helper::removeSpace($input['content']);
         $category_id    = $input['category_id'];
-        $keyword        = $input['keyword'];
+        $keywords       = $input['keywords'];
+        $description    = $input['description'];
 
         Blog::where('id', $id)
             ->update([
@@ -133,7 +135,8 @@ class BlogController extends Controller
                 'sub_content'   => $sub_content,
                 'content'       => $content,
                 'category_id'   => $category_id,
-                'keyword'       => $keyword,
+                'keywords'      => $keywords,
+                'description'   => $description,
                 'updated_at'    => date("Y-m-d H:i:s"),
             ]);
 

@@ -2,7 +2,7 @@
 
 <?php
     $keywords = \App\SiteConfig::where('name', 'keywords')->first();
-    $description = \App\SiteConfig::where('name', 'keywords')->first();
+    $description = \App\SiteConfig::where('name', 'description')->first();
 ?>
 @section('title', 'dulich.gmon.vn')
 @section('keywords', $keywords->text)
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-12">
                     <?php
-                        $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                        $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'slug', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
                         ?>
                     @if(count($blogs) > 0)
                     <ul class="list-group list-group-category">
@@ -86,7 +86,7 @@
                         <div class="row">
                             @if($category->id == 2)
                                 <?php
-                                    $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(5)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                                    $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(5)->select('id','title', 'slug', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
                                     ?>
                                 @if(count($blogs) > 0)
                                 <div class="col-lg-6 col-12 big-content">
@@ -137,7 +137,7 @@
                                 @endif
                             @else
                                 <?php
-                                    $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
+                                    $blogs = \App\Blog::where('category_id', $category->id)->where('active', 1)->take(4)->select('id','title', 'slug', 'sub_content', 'image', 'updated_at')->orderBy('updated_at', 'desc')->get();
                                     ?>
                                 @if(count($blogs) > 0)
                                 @foreach($blogs as $blog)

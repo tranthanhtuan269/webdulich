@@ -80,3 +80,22 @@
 .big-content{
 	padding: 0 2px;
 }
+
+.blog-area.archive .pagination li.disabled,
+.blog-area.archive .pagination li.active{
+	background: #EDEDED;
+	opacity: 0.5;
+}
+
+.blog-area.archive .pagination li span{
+	width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background: #EDEDED;
+    display: block;
+    text-align: center;
+    color: #424646;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 16px;
+}

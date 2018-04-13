@@ -62,10 +62,11 @@
 					@endforeach
 				</div>
 				@if($blogs->count() > 1)
-					{{ $blogs->links() }}
-					@if(false)
 					<div class="row">
 						<div class="col-12">
+					{{ $blogs->links() }}
+						@if(false)
+					
 							<!-- Start Pagination -->
 							<ul class="pagination">
 								<li class="active"><a href="#">1</a></li>
@@ -74,9 +75,9 @@
 								<li class="next"><a href="#">Next</a></li>
 							</ul>
 							<!--/ End Pagination -->
+						@endif
 						</div>
 					</div>
-					@endif
 				@endif
 			</div>
 			<div class="col-lg-3 col-12">

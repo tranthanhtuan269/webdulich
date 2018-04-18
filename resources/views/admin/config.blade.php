@@ -246,6 +246,7 @@
 							<input type="hidden" id="image_field" name="image" value="">
 							<input type="file" name="image-img" id="image-img" style="display: none;">
 							<img id="image_blog" src="{{ url('/') }}/public/images/webbanner.jpg" width="100%">
+							Ctrl + F5 để xem kết quả.
 					  	</form>
 			        </div>
 			    </div>

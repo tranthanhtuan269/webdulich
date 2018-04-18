@@ -5,6 +5,8 @@
 	$siteConfig = \DB::table('site_configs')->pluck('text', 'name');
 	// dd($siteConfig);
 ?>
+
+<link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/css/croppie.css" />
 <script src="{{ url('/') }}/public/templateEditor/ckeditor/ckeditor.js"></script>
 <style type="text/css">
 	#v-pills-tab,
@@ -17,8 +19,9 @@
 		<div class="nav flex-column nav-pills col-md-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		  	<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Site Config</a>
 		  	<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Home Config</a>
+		  	<a class="nav-link" id="v-pills-backgroud-tab" data-toggle="pill" href="#v-pills-backgroud" role="tab" aria-controls="v-pills-backgroud" aria-selected="false">Background</a>
 		  	<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-		  	<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-seo" role="tab" aria-controls="v-pills-seo" aria-selected="false">Seo</a>
+		  	<a class="nav-link" id="v-pills-seo-tab" data-toggle="pill" href="#v-pills-seo" role="tab" aria-controls="v-pills-seo" aria-selected="false">Seo</a>
 		</div>
 		<div class="tab-content col-md-10" id="v-pills-tabContent">
 		  	<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -236,6 +239,17 @@
 			        </div>
 			    </div>
 		  	</div>
+		  	<div class="tab-pane fade" id="v-pills-backgroud" role="tabpanel" aria-labelledby="v-pills-backgroud-tab">
+		  		<div class="row">
+			        <div class="col-sm-8 col-md-offset-1">
+			        	<form class="form-horizontal">
+							<input type="hidden" id="image_field" name="image" value="">
+							<input type="file" name="image-img" id="image-img" style="display: none;">
+							<img id="image_blog" src="{{ url('/') }}/public/images/webbanner.jpg" width="100%">
+					  	</form>
+			        </div>
+			    </div>
+		  	</div>
 		  	<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 		  		<div class="row">
 			        <div class="col-sm-12">
@@ -321,7 +335,43 @@
 		</div>
 	</div>
 </div>
+
+<style type="text/css">
+    .croppie-container .cr-boundary{
+        margin: 0;
+        width: 100%!important;
+    }
+    .croppie-container .cr-slider-wrap{
+        margin: 0;
+        width: 100%;
+    }
+</style>
+
+<!-- Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Change Background</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="upload-demo"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="upload-image-result">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url('/') }}/public/js/croppie.js"></script>
 <script>
+	var $sitepath = $('base').attr('href');
+
 	CKEDITOR.replace( 'page_about_us', {
         'filebrowserBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files',
         'filebrowserImageBrowseUrl' : '{{ url("/") }}/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images',
@@ -387,5 +437,94 @@
     } );
     var html_page_disclaimer = '<?php echo preg_replace('/(\>)\s*(\<)/m', '$1$2', str_replace(PHP_EOL, '', $siteConfig['page_disclaimer'])); ?>';
     CKEDITOR.instances['page_disclaimer'].setData(html_page_disclaimer);
+
+
+    $(document).ready(function(){
+    	var $fileUpload;
+    	var $uploadCrop;
+
+    	$uploadCrop = $('#upload-demo').croppie({
+			enableExif: true,
+	        viewport: {
+	            width: 500,
+	            height: 250,
+	            type: 'square'
+	        },
+	        boundary: {
+	            width: 800,
+	            height: 400
+	        },
+	        showZoomer: false
+		});
+		
+    	$('#postModal').on('shown.bs.modal', function (e) {
+            e.preventDefault();
+            var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+            if ($.inArray($($fileUpload).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                swal({
+                    html: '<div class="alert-danger">Only formats are allowed : '+fileExtension.join(', ')+'</div>',
+                  })
+                return;
+            }
+            loadImage($fileUpload);
+        });
+
+    	$('#image_blog').click(function(){
+    		$('#image-img').click();
+    	});
+
+    	$('#image-img').change(function(){
+    		$fileUpload = this;
+    		if($(this).val().length > 0){
+	    		$('#postModal').modal('show');
+	    	}
+    	});
+
+    	function loadImage(input) {
+          	if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	            
+	            reader.onload = function (e) {
+					$('.upload-demo').addClass('ready');
+	            	$uploadCrop.croppie('bind', {
+	            		url: e.target.result
+	            	}).then(function(){
+	            		console.log('jQuery bind complete');
+	            	});
+	            	
+	            }
+	            
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	        else {
+		        swal("Sorry - you're browser doesn't support the FileReader API");
+		    }
+        }
+
+        $('#upload-image-result').on('click', function (ev) {
+	        $uploadCrop.croppie('result', {
+	            type: 'canvas',
+	            size: 'viewport'
+	        }).then(function (resp) {
+
+	            $.ajax({
+	                headers: {
+	                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	                },
+	                url: "{{ url('/') }}/ajaxprobackground",
+	                type: "POST",
+	                data: {"image":resp},
+	                success: function (data) {
+	                    if(data.code == 200){
+	                        $('#image_blog').val(data.image_url);
+	                        $('#image_blog').attr('src',$sitepath + '/public/images/webbanner.jpg');
+	                        $('#image_field').val(data.image_url);
+	                        $('#postModal').modal('toggle');
+	                    }
+	                }
+	            });
+	        });
+	    });
+    });
 </script>
 @endsection

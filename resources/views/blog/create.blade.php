@@ -111,7 +111,7 @@
     }
 </style>
 
- <script src="{{ url('/') }}/public/js/croppie.js"></script>
+<script src="{{ url('/') }}/public/js/croppie.js"></script>
 <script>
 	var $sitepath = $('base').attr('href');
 

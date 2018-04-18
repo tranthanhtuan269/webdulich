@@ -120,6 +120,20 @@ class HomeController extends Controller
         return \Response::json(array('code' => '404', 'message' => 'unsuccess', 'image_url' => ""));
     }
 
+    public function ajaxprobackground(Request $request){
+        if(isset($_POST["image"])){
+            $data = $_POST["image"];
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            $imageName = 'webbanner.jpg';
+            $destinationPath = base_path('public/images');
+            file_put_contents($destinationPath.'/'.$imageName, $data);
+            return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => $imageName));
+        }
+        return \Response::json(array('code' => '404', 'message' => 'unsuccess', 'image_url' => ""));
+    }
+
 
     /**
      * Remove the specified resource from storage.

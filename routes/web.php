@@ -44,6 +44,7 @@ Route::post('postJCrop', 'HomeController@postJCrop')->name('home.postJCrop');
 Route::get('/test', 'SiteController@test');
 Route::post('/postImage', 'HomeController@postImage');
 Route::post('/ajaxpro', 'HomeController@ajaxpro');
+Route::post('/ajaxprobackground', 'HomeController@ajaxprobackground');
 
 Route::get('/home', 'HomeController@index')->name('home.home');
 

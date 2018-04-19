@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sitemap.xml', function () {
+    return view('sitemap');
+});
+
 Route::get('/about-us', function () {
     return view('site.aboutus');
 });

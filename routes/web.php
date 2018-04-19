@@ -19,6 +19,10 @@ Route::get('/sitemap.xml', function () {
     return view('sitemap');
 });
 
+Route::get('/robots.txt', function () {
+    return view('robots');
+});
+
 Route::get('/about-us', function () {
     return view('site.aboutus');
 });

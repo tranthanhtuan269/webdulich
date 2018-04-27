@@ -22,6 +22,7 @@
     </div>
 </section>
 <?php
+    $url_page = 'http://dulich.gmon.vn';
     const MAX_SIZE = 44;
     $categories = \App\Category::where('active', 1)->take(5)->get();
     $partners   = \App\Partner::where('active', 1)->take(5)->orderBy('id', 'desc')->get();
@@ -38,19 +39,19 @@
                         ?>
                     @if(count($blogs) > 0)
                     <ul class="list-group list-group-category">
-                        <li class="list-group-item active"><h2>{{  $category->name }}</h2><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}" class="float-right">xem thêm >> </a></li>
+                        <li class="list-group-item active"><h2>{{  $category->name }}</h2><a href="{{ $url_page }}/categories/{{ $category->id }}/{{ $category->slug }}" class="float-right">xem thêm >> </a></li>
                         <li class="list-group-item">
                             <div class="row">
                             @foreach($blogs as $blog)
-                            <div class="col-lg-3 col-md-3 col-3">
+                            <div class="col-lg-3 col-md-3 col-12">
                                 <!-- Single Blog -->
                                 <div class="single-blog">
                                     <div class="blog-head">
-                                        <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                        <img src="{{ $url_page }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                     </div>
                                     <div class="blog-content">
                                         <span>{{ date('d-m-Y', strtotime($blog->updated_at)) }}</span>
-                                        <h4><a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
+                                        <h4><a href="{{ $url_page }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
                                         <?php 
                                         if(strlen($blog->title) > MAX_SIZE){
                                             echo mb_strimwidth($blog->title, 0, MAX_SIZE, '...');
@@ -59,7 +60,7 @@
                                         }
                                         ?>
                                         </a></h4>
-                                        <a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}" class="btn">Chi tiết >></a>
+                                        <a href="{{ $url_page }}/blogs/{{ $blog->id }}/{{ $blog->slug }}" class="btn">Chi tiết >></a>
                                     </div>
                                 </div>
                                 <!--/ End Single Blog -->
@@ -81,7 +82,7 @@
             <div class="col-12">
                 <!-- Destination -->
                 <ul class="list-group list-group-category">
-                    <li class="list-group-item active text-left"><h2>{{  $category->name }}</h2><a href="{{ url('/') }}/categories/{{ $category->id }}/{{ $category->slug }}" class="float-right">xem thêm >> </a></li>
+                    <li class="list-group-item active text-left"><h2>{{  $category->name }}</h2><a href="{{ $url_page }}/categories/{{ $category->id }}/{{ $category->slug }}" class="float-right">xem thêm >> </a></li>
                     <li class="list-group-item">
                         <div class="row">
                             @if($category->id == 2)
@@ -92,8 +93,8 @@
                                 <div class="col-lg-6 col-12 big-content">
                                     <!-- Single Destination -->
                                     <div class="single-destination overlay">
-                                        <a href="{{ url('/') }}/blogs/{{ $blogs[0]->id }}/{{ $blogs[0]->slug }}">
-                                            <img src="{{ url('/') }}/public/images/{{ $blogs[0]->image }}" alt="{{ $blogs[0]->title }}">
+                                        <a href="{{ $url_page }}/blogs/{{ $blogs[0]->id }}/{{ $blogs[0]->slug }}">
+                                            <img src="{{ $url_page }}/public/images/{{ $blogs[0]->image }}" alt="{{ $blogs[0]->title }}">
                                             <div class="hover">
                                                 <!-- <p class="price">FROM <span>$400</span></p> -->
                                                 <h4 class="name">{{ $blogs[0]->title }}</h4>
@@ -116,8 +117,8 @@
                                 <div class="col-lg-6 col-12">
                                     <!-- Single Destination -->
                                     <div class="single-destination overlay">
-                                        <a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
-                                            <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                        <a href="{{ $url_page }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
+                                            <img src="{{ $url_page }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                             <div class="hover">
                                                 <!-- <p class="price">FROM <span>$400</span></p> -->
                                                 <h4 class="name">{{ $blog->title }}</h4>
@@ -144,8 +145,8 @@
                                 <div class="col-lg-3 col-12">
                                     <!-- Single Destination -->
                                     <div class="single-destination overlay">
-                                        <a href="{{ url('/') }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
-                                            <img src="{{ url('/') }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
+                                        <a href="{{ $url_page }}/blogs/{{ $blog->id }}/{{ $blog->slug }}">
+                                            <img src="{{ $url_page }}/public/images/{{ $blog->image }}" alt="{{ $blog->title }}">
                                             <div class="hover">
                                                 <!-- <p class="price">FROM <span>$400</span></p> -->
                                                 <h4 class="name">{{ $blog->title }}</h4>
@@ -179,7 +180,7 @@
                         @foreach($partners as $partner)
                         <!-- Single Clients -->
                         <div class="single-clients">
-                            <a href="{{ $partner->url }}" target="_blank"><img src="{{ url('/') }}/public/images/{{ $partner->image }}" alt="{{ $partner->name }}"></a>
+                            <a href="{{ $partner->url }}" target="_blank"><img src="{{ $url_page }}/public/images/{{ $partner->image }}" alt="{{ $partner->name }}"></a>
                         </div>
                         <!--/ End Single Clients -->
                         @endforeach
